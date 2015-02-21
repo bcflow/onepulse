@@ -28,6 +28,7 @@ group :development do
   gem "awesome_print"
   gem "faker"
   gem "pry"
+  gem "rails-erd"
 end
 
 

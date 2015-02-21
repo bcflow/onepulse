@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     
   end
 
+  def index
+    # @blips = current_user.
+
+    #     @sentence = Sentence.find params[:sentence_id]
+    # @blip = Blip.new blip_params
+    # @blip.sentence = @sentence
+    # @blip.user_id = current_user.id
+
+  end
+
   def update
     if @user.update user_params
       flash[:success] = "Your profile was successfully edited."
