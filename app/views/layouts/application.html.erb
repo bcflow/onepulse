@@ -27,6 +27,8 @@
     <li>Welcome back, <%= current_user.email %></li>
         |
     <li><a href="/log-out">Logout</a></li>
+    |
+    <li><%= link_to "Profile", edit_user_path(current_user) %>
     <% end %>
   </ul>
   </nav>

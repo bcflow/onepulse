@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/alibabajan/country_select.git
+  revision: 2c56b876740647a9d3493eea2a1a635474ce3b20
+  specs:
+    country_select (2.1.0)
+      countries (~> 0.9, >= 0.9.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,10 +65,8 @@ GEM
     coffee-script-source (1.9.1)
     colorize (0.7.5)
     columnize (0.9.0)
-    countries (0.9.3)
+    countries (0.10.0)
       currencies (~> 0.4.2)
-    country_select (2.1.1)
-      countries (>= 0.9.3, < 0.10.0)
     currencies (0.4.2)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -182,7 +187,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   colorize
-  country_select
+  country_select!
   faker
   hirb
   interactive_editor

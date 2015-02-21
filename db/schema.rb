@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221193101) do
+ActiveRecord::Schema.define(version: 20150221212432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150221193101) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "sentence_id"
+    t.integer  "user_id"
   end
 
   add_index "blips", ["sentence_id"], name: "index_blips_on_sentence_id", using: :btree
@@ -39,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150221193101) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "trigger"
+    t.integer  "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150221193101) do
     t.integer  "age"
     t.text     "gender"
     t.text     "city"
+    t.string   "name"
   end
 
   add_foreign_key "sentence_tags", "sentences"

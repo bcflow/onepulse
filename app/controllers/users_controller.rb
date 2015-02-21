@@ -1,7 +1,23 @@
 class UsersController < ApplicationController
 
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
+
   def new
 
+  end
+
+  def edit
+    
+  end
+
+  def update
+    if @user.update user_params
+      flash[:success] = "Your profile was successfully edited."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "Your user profile was not updated"
+      render :edit
+    end
   end
 
 
@@ -19,8 +35,13 @@ class UsersController < ApplicationController
 
   private
 
+  def logged_in_user
+    @user = User.find(current_user.id)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, 
+                                 :age, :name, :city, :gender, :country)
   end
 
 end
