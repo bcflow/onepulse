@@ -3,8 +3,15 @@ class User < ActiveRecord::Base
 
 
   attr_accessor :password
+
   validates_confirmation_of :password
+  validates_confirmation_of :email
   before_save :encrypt_password
+
+  validates :email, uniqueness: true
+  validates_format_of :email, :with => /@/ 
+
+
 
 
   private
