@@ -10,13 +10,26 @@
 
  </head>
  <body>
-  <header class="menu">
+  <nav class="menu">
    <ul>
     <li><a href="/sentences/new">New Sentence</a></li>
     |
     <li><a href="/sentences/">Index</a></li>
+        <% if !current_user.present? %>
+    <li><a href="/log-in">Login</a></li>
+    |
+        <li><a href="/users/new">Signup</a></li>
+   <% end %>
+
+    |
+
+    <% if current_user.present? %>
+    <li>Welcome back, <%= current_user.email %></li>
+        |
+    <li><a href="/log-out">Logout</a></li>
+    <% end %>
   </ul>
-  </header>
+  </nav>
   <div class="container">
    <div id="alerts">
     <% if flash[:success] %>

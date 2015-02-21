@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221012905) do
+ActiveRecord::Schema.define(version: 20150221185538) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "blips", force: :cascade do |t|
     t.string   "body"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150221012905) do
     t.integer  "sentence_id"
   end
 
-  add_index "blips", ["sentence_id"], name: "index_blips_on_sentence_id"
+  add_index "blips", ["sentence_id"], name: "index_blips_on_sentence_id", using: :btree
 
   create_table "sentence_tags", force: :cascade do |t|
     t.integer  "sentence_id"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20150221012905) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "sentence_tags", ["sentence_id"], name: "index_sentence_tags_on_sentence_id"
-  add_index "sentence_tags", ["tag_id"], name: "index_sentence_tags_on_tag_id"
+  add_index "sentence_tags", ["sentence_id"], name: "index_sentence_tags_on_sentence_id", using: :btree
+  add_index "sentence_tags", ["tag_id"], name: "index_sentence_tags_on_tag_id", using: :btree
 
   create_table "sentences", force: :cascade do |t|
     t.text     "body"
@@ -45,4 +48,14 @@ ActiveRecord::Schema.define(version: 20150221012905) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_foreign_key "sentence_tags", "sentences"
+  add_foreign_key "sentence_tags", "tags"
 end
