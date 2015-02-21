@@ -25,7 +25,7 @@ class BlipsController < ApplicationController
   private
 
   def blip_params
-     params.require(:blip).permit(:body)
+     params.require(:blip).permit(:body, {user_blips: []})
   end
 
   # def find_sentence

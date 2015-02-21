@@ -15,6 +15,7 @@
     <li><a href="/sentences/new">New Sentence</a></li>
     |
     <li><a href="/sentences/">Index</a></li>
+    |
         <% if !current_user.present? %>
     <li><a href="/log-in">Login</a></li>
     |
@@ -25,10 +26,12 @@
 
     <% if current_user.present? %>
     <li>Welcome back, <%= current_user.email %></li>
-        |
+    |
     <li><a href="/log-out">Logout</a></li>
     |
     <li><%= link_to "Profile", edit_user_path(current_user) %>
+    |
+    <li><%= link_to "History", "/history" %></li>
     <% end %>
   </ul>
   </nav>

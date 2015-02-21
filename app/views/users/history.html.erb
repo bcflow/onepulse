@@ -1,0 +1,8 @@
+<ul>
+
+<% @blips.each do |blip| %> 
+  <li><%= blip.sentence.body.gsub("_", blip.body) %></li>
+<% end %>
+
+</ul>
+

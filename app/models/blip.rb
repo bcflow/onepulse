@@ -1,6 +1,7 @@
 class Blip < ActiveRecord::Base
 
   belongs_to :sentence
+  
   has_many :users, through: :user_blips
   has_many :user_blips, dependent: :destroy
 

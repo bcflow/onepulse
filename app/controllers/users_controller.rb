@@ -10,8 +10,11 @@ class UsersController < ApplicationController
     
   end
 
-  def index
-    # @blips = current_user.
+  def history
+    @blips = Blip.where(:user_id => current_user.id) 
+    #Blip.where(:body).where(:body => { :user_id => current_user.id })
+
+    
 
     #     @sentence = Sentence.find params[:sentence_id]
     # @blip = Blip.new blip_params
