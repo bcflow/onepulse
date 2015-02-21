@@ -1,0 +1,10 @@
+  <div class="form-group">
+    <%= form_for @sentence do |f| %>
+    <%= f.text_field :body, class: "form-control", placeholder: "Sentence" %><br>
+    <%= f.text_field :trigger, class: "form-control", placeholder: "Trigger" %>
+    <br>
+    <hr>
+    <%= f.submit class: "btn btn-default" %>
+    <%= button_tag "Reset", type: :reset %>
+    <% end %>
+  </div>
