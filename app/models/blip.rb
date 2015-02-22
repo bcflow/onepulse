@@ -1,12 +1,11 @@
 class Blip < ActiveRecord::Base
 
-  validate :word_is_valid
+  #validate :word_is_valid
 
   belongs_to :sentence
 
   #Users Relation
-  has_many :users, through: :user_blips
-  has_many :user_blips, dependent: :nullify
+  has_and_belongs_to_many :users
 
 
 

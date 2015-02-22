@@ -1,5 +1,14 @@
 <ul>
-
+<script>
+FB.api(
+    "/me/friends",
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+      }
+    }
+);
+</script>
 <% @blips.each do |blip| %> 
   <li><%= blip.sentence.body.gsub("_", blip.body) %></li>
 <% end %>

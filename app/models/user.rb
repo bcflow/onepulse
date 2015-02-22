@@ -11,8 +11,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_format_of :email, :with => /@/ 
 
-  has_many :blipped_users, through: :user_blips, source: :blip
-  has_many :user_blips, dependent: :nullify
+  has_and_belongs_to_many :blips
 
 
 
