@@ -6,7 +6,6 @@ class BlipsController < ApplicationController
     @sentence = Sentence.find params[:sentence_id]
     @blip = Blip.new blip_params
     @blip.sentence = @sentence
-    @blip.user_id = current_user.id
 
     if @blip.save
       flash[:success] = "Blip created successfully"
@@ -25,7 +24,7 @@ class BlipsController < ApplicationController
   private
 
   def blip_params
-     params.require(:blip).permit(:body, {user_blips: []})
+     params.require(:blip).permit(:body)
   end
 
   # def find_sentence
