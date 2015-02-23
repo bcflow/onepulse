@@ -1,37 +1,31 @@
 class Blip < ActiveRecord::Base
 
-  #validate :word_is_valid
+  #RELATIONS
 
-  belongs_to :sentence
+  belongs_to              :sentence
+  has_and_belongs_to_many :users
 
   before_save { |blip| blip.body = blip.body.downcase }
 
-  #Users Relation
-  has_and_belongs_to_many :users
 
+  #VALIDATIONS
 
-
-
-  validates :body, presence: true
-
-  #Checks word count
-  validates :body, length: {
-    minimum: 1,
-    maximum: 1,
-    tokenizer: lambda { |str| str.split(/\s+/) },
-    too_short: "must have at least %{count} word!",
-    too_long: "You must input only %{count} word"
-  }
-
-  #Checks that blip is letters only
-  validates_format_of :body, :with => /\A[a-zA-Z]+\z/
+  validate            :word_is_valid
+  validates           :body, presence: true
+  validates           :body, length: { maximum: 25 }
+  validates_format_of :body, :with => /\A[^\W_]+\z/
+  validates           :body, length: {
+                        minimum: 1,
+                        maximum: 1,
+                        tokenizer: lambda { |str| str.split(/\s+/) },
+                        too_short: "You must have at least one word!",
+                        too_long: "You must input only one word"
+                        }
 
   private
 
   def word_is_valid
-  errors.add(:blip, "isn't valid") if Dictionary.where(blip: word).blank?
+   
   end
-
-
 
 end

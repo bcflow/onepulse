@@ -14,13 +14,13 @@
  *= require_self
  */
 
- 
-// @import 'bootstrap-sprockets';
-// @import 'bootstrap';
 
-// * {
-//   font-family: 'Lato', sans-serif;
-// }
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+    font-family: 'Lato', 300, sans-serif;
+  }
 
 
 

@@ -27,8 +27,4 @@ class SessionsController < ApplicationController
     redirect_to "/"
   end
 
-  private
-
-
-
 end

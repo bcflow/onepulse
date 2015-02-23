@@ -1,6 +1,5 @@
 class SentencesController < ApplicationController
 
-    #before_action :find_sentence, only: [:index]
 
   def new
     @sentence = Sentence.new
@@ -33,17 +32,15 @@ class SentencesController < ApplicationController
     
   end
 
-
-private
+  
+  private
   
   def sentence_params
-     params.require(:sentence).permit(:body)
+     params.require(:sentence).permit(:body, { tag_ids:[] })
   end
 
   def find_sentence
     @sentence = Sentence.find params[:id]
   end
-
-
 
 end

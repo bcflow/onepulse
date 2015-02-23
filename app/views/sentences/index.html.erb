@@ -1,9 +1,8 @@
-<h1>Welcome</h1>
+<h1>one pulse</h1>
 
 <% @sentences.each do |sentence| %>
 
   <%= form_for [sentence, Blip.new], url: sentence_blips_path(sentence) do |f| %>
-    <input type="hidden" name="blip['sentence_id']" value="<%= sentence.id %>" />
     <tr>
       <td><strong><%= sentence.body.gsub("_", f.text_field(:body)).html_safe %></strong></td>
     <tr>

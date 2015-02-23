@@ -12,11 +12,8 @@ class UsersController < ApplicationController
 
   def history
     @blips = Blip.where(:user_id => current_user.id) 
-    #Blip.where(:body).where(:body => { :user_id => current_user.id })
-
-    
-
-    #     @sentence = Sentence.find params[:sentence_id]
+    # Blip.where(:body).where(:body => { :user_id => current_user.id })
+    # @sentence = Sentence.find params[:sentence_id]
     # @blip = Blip.new blip_params
     # @blip.sentence = @sentence
     # @blip.user_id = current_user.id
@@ -32,8 +29,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
-
+  
   def create
     @user = User.new(user_params)
     if @user.save

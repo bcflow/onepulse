@@ -5,6 +5,7 @@ class Sentence < ActiveRecord::Base
 
   #TAGS RELATION
   has_and_belongs_to_many :tags
+  accepts_nested_attributes_for :tags, allow_destroy: true
 
   #VALIDATIONS
   validates :body, presence: true

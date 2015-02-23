@@ -14,8 +14,6 @@
  <body>
   <nav class="menu">
    <ul>
-    <li><a href="/sentences/new">New Sentence</a></li>
-    |
     <li><a href="/sentences/">Index</a></li>
     |
         <% if !current_user.present? %>
@@ -37,7 +35,11 @@
     <% end %>
   </ul>
   </nav>
+
   <div class="container">
+
+  <!-- Alert boxes -->
+
    <div id="alerts">
     <% if flash[:success] %>
     <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
@@ -47,31 +49,32 @@
     <% end %>
    </div>
 
+   <!-- Facebook -->
+
    <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
    </fb:login-button>
 
-   <button onclick="fbLogoutUser();">
+   <button class="btn btn-sm warning" onclick="fbLogoutUser();">
    </button>
 
-
-  <div id="status"></div>
-
-
+   <div id="status"></div>
 
    <%= yield %>
+   
    <hr>
   </div>
 
+  <!--- Facebook logout -->
+
   <script>
-  
-  function fbLogoutUser() {
-    FB.getLoginStatus(function(response) {
-        if (response && response.status === 'connected') {
-            FB.logout(function(response) {
-                document.location.reload();
-            });
-        }
-    });
+    function fbLogoutUser() {
+      FB.getLoginStatus(function(response) {
+          if (response && response.status === 'connected') {
+              FB.logout(function(response) {
+                  document.location.reload();
+              });
+          }
+      });
     }
     </script>
   </body>

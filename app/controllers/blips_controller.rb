@@ -1,11 +1,12 @@
 class BlipsController < ApplicationController
 
   def create
-    user = current_user
     @blip = Blip.new blip_params
+    user = current_user
+    user.blips << @blip
     @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
-    user.blips << @blip
+    
 
     if @blip.save
       flash[:success] = "Blip created successfully"
@@ -16,10 +17,10 @@ class BlipsController < ApplicationController
     end
   end
 
-
   def destroy
 
   end
+
 
   private
 

@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 # ADDED GEMS
+gem "bootstrap-sass"
 gem 'simple_form'
 gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
