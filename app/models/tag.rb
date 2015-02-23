@@ -1,7 +1,6 @@
 class Tag < ActiveRecord::Base
 
-  has_many :sentence_tags, dependent: :destroy
-  has_many :sentences, through: :sentence_tags
+  has_and_belongs_to_many :sentences
 
   validates :name, presence: true, uniqueness: true
 

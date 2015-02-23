@@ -1,16 +1,11 @@
 class BlipsController < ApplicationController
 
-  #before_action :find_sentence
-
   def create
-    @sentence = Sentence.find params[:sentence_id]
-    #@blip.users << current_user
+    user = current_user
     @blip = Blip.new blip_params
+    @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
-
-#     @event = Event.new(params[:event])
-# @organizers = Organizer.where(:id => params[:organizing_team])
-# @event.organizers << @organizers 
+    user.blips << @blip
 
     if @blip.save
       flash[:success] = "Blip created successfully"
@@ -29,7 +24,7 @@ class BlipsController < ApplicationController
   private
 
   def blip_params
-     params.require(:blip).permit(:body)
+     params.require(:blip).permit(:body, :sentence_id)
   end
 
   # def find_sentence

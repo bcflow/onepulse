@@ -4,6 +4,8 @@ class Blip < ActiveRecord::Base
 
   belongs_to :sentence
 
+  before_save { |blip| blip.body = blip.body.downcase }
+
   #Users Relation
   has_and_belongs_to_many :users
 
@@ -29,5 +31,7 @@ class Blip < ActiveRecord::Base
   def word_is_valid
   errors.add(:blip, "isn't valid") if Dictionary.where(blip: word).blank?
   end
+
+
 
 end

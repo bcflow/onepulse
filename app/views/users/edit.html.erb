@@ -1,7 +1,6 @@
 <%= simple_form_for @user do |f| %>
   <%= f.input :name, placeholder: "name" %>
   <%= f.input :email, placeholder: "email" %>
-    <%= f.input :email_confirmation, placeholder: "confirm your email" %>
   <%= f.input :gender, as: :radio_buttons %>
    <%= f.input :city, placeholder: "city" %>
     <%= f.input :age, collection: 4..120 %>

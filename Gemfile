@@ -16,8 +16,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # ADDED GEMS
 gem 'simple_form'
+gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
-#gem 'country_select'
+gem 'activeadmin', github: 'activeadmin'
 gem 'country_select', git: 'https://github.com/alibabajan/country_select.git'
 
 

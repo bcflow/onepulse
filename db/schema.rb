@@ -11,44 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222215112) do
+ActiveRecord::Schema.define(version: 20150223014736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "blips", force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "sentence_id"
-    t.integer  "user_id"
   end
 
   add_index "blips", ["sentence_id"], name: "index_blips_on_sentence_id", using: :btree
 
   create_table "blips_users", force: :cascade do |t|
-    t.integer "blip_id"
     t.integer "user_id"
+    t.integer "blip_id"
   end
-
-  add_index "blips_users", ["blip_id"], name: "index_blips_users_on_blip_id", using: :btree
-  add_index "blips_users", ["user_id"], name: "index_blips_users_on_user_id", using: :btree
 
   create_table "dictionaries", force: :cascade do |t|
     t.string   "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "sentence_tags", force: :cascade do |t|
-    t.integer  "sentence_id"
-    t.integer  "tag_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "sentence_tags", ["sentence_id"], name: "index_sentence_tags_on_sentence_id", using: :btree
-  add_index "sentence_tags", ["tag_id"], name: "index_sentence_tags_on_tag_id", using: :btree
 
   create_table "sentences", force: :cascade do |t|
     t.text     "body"
@@ -86,8 +105,6 @@ ActiveRecord::Schema.define(version: 20150222215112) do
     t.string   "name"
   end
 
-  add_foreign_key "sentence_tags", "sentences"
-  add_foreign_key "sentence_tags", "tags"
   add_foreign_key "user_blips", "blips"
   add_foreign_key "user_blips", "users"
 end
