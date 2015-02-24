@@ -3,7 +3,6 @@ class SentencesController < ApplicationController
 
   def new
     @sentence = Sentence.new
-    render :new
   end
 
   def create
@@ -13,13 +12,15 @@ class SentencesController < ApplicationController
       flash[:success] = "Sentence successfully created."
       redirect_to sentences_path
     else
-      flash[:alert] = "Sentence was not created!"
+      flash.now[:alert] = "Sentence was not created!"
       render :new
     end
   end
 
   def index
     @sentences = Sentence.all
+    #.blips.users.where(:user_id != current_user.id)
+    # All Sentences where blip.users sentence_id is not present
   end
 
   def destroy

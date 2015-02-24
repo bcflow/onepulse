@@ -5,9 +5,10 @@ class Blip < ActiveRecord::Base
   belongs_to              :sentence
   has_and_belongs_to_many :users
 
-  before_save { |blip| blip.body = blip.body.downcase }
+  before_save { |blip| blip.body = blip.body.downcase.strip }
+  #scope :blip_answered,  
 
-
+  
   #VALIDATIONS
 
   validate            :word_is_valid
@@ -25,7 +26,8 @@ class Blip < ActiveRecord::Base
   private
 
   def word_is_valid
-   
+     errors.add(:body, "is not an english word") if Dictionary.where(word: body).blank?
   end
+
 
 end
