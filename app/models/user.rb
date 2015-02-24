@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   #RELATIONS
   has_and_belongs_to_many :blips
 
+  has_many :sentences, through: :blips
   
   #VALIDATIONS
   validates_confirmation_of :password
