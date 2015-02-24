@@ -9,6 +9,7 @@ class BlipsController < ApplicationController
     
 
     if @blip.save
+      
       flash[:success] = "Blip created successfully"
       redirect_to root_path
     else

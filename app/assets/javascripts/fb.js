@@ -17,8 +17,7 @@ $( document ).ready(function() {
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML = '';
     }
   }
 
@@ -75,7 +74,7 @@ $( document ).ready(function() {
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        '';
     });
   }
 });

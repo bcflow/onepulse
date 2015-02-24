@@ -1,83 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <title>One Pulse</title>
+  <head>
+    <title>One Pulse</title>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,100italic,300italic,400italic' rel='stylesheet' type='text/css'>
-    <script src="fb.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <script src="fb.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    </head>
+    <body>
+      <nav class="menu" align="right">
+        <ul>
+          <li><a href="/sentences/">Index</a></li>
+          |
+          <li>        <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+        </fb:login-button>
+        <button class="btn btn-default" onclick="fbLogoutUser();">FB Logout
+        </button></li>
+          <% if !current_user.present? %>
 
- </head>
- <body>
-  <nav class="menu">
-   <ul>
-    <li><a href="/sentences/">Index</a></li>
-    |
-        <% if !current_user.present? %>
-    <li><a href="/log-in">Login</a></li>
-    |
-        <li><a href="/users/new">Signup</a></li>
-   <% end %>
+            <li><a href="/log-in">Login</a></li>
+            |
+            <li><a href="/users/new">Signup</a></li>
+          <% end %>
+            |
+          <% if current_user.present? %>
+            <li><a href="/sentences/new">Submit Question</a></li>
+            |
+            <li>Welcome back, <%= current_user.email %></li>
+            |
+            <li><a href="/log-out">Logout</a></li>
+            |
+            <li><%= link_to "Profile", edit_user_path(current_user) %>
+            |
+            <li><%= link_to "History", "/history" %></li>
+          <% end %>
+        </ul>
+      </nav>
+      <div class="container" align="center">
+        <!-- Alert boxes -->
+        <div id="alerts">
+          <% if flash[:success] %>
+          <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+          <% end %>
+          <% if flash[:alert] %>
+          <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+          <% end %>
+        </div>
+        <!-- Facebook -->
 
-    |
-
-    <% if current_user.present? %>
-    <li>Welcome back, <%= current_user.email %></li>
-    |
-    <li><a href="/log-out">Logout</a></li>
-    |
-    <li><%= link_to "Profile", edit_user_path(current_user) %>
-    |
-    <li><%= link_to "History", "/history" %></li>
-    <% end %>
-  </ul>
-  </nav>
-
-  <div class="container">
-
-  <!-- Alert boxes -->
-
-   <div id="alerts">
-    <% if flash[:success] %>
-    <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
-    <% end %>
-    <% if flash[:alert] %>
-    <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-    <% end %>
-   </div>
-
-   <!-- Facebook -->
-
-   <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-   </fb:login-button>
-
-   <button class="btn btn-sm warning" onclick="fbLogoutUser();">
-   </button>
-
-   <div id="status"></div>
-
-   <%= yield %>
-   
-   <hr>
-  </div>
-
-  <!--- Facebook logout -->
-
-  <script>
-    function fbLogoutUser() {
-      FB.getLoginStatus(function(response) {
+        <%= yield %>
+        
+        <hr>
+      </div>
+        <!--- Facebook logout -->
+        <script>
+          function fbLogoutUser() {
+          FB.getLoginStatus(function(response) {
           if (response && response.status === 'connected') {
-              FB.logout(function(response) {
-                  document.location.reload();
-              });
-          }
-      });
-    }
-    </script>
-  </body>
-</html>
-
-
+          FB.logout(function(response) {
+          document.location.reload();
+            });
+           }
+          });
+         }
+        </script>
+      </body>
+    </html>

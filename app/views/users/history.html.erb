@@ -1,18 +1,10 @@
-<script>
-  FB.api(
-    "/me/friends",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
-    }
-  );
-</script>
+
 
 <ul>
-<% current_user.blips.each do |blip| %> 
+  <% current_user.blips.each do |blip| %> 
   <li><%= blip.sentence.body.gsub("_", blip.body) %></li>
-<% end %>
+   <%#= blip.total_sentences(sentence.id) %>
+  <% end %>
 
 </ul>
 

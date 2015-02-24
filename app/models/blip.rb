@@ -23,11 +23,26 @@ class Blip < ActiveRecord::Base
                         too_long: "You must input only one word"
                         }
 
+  #SCOPES
+
+  #returns total blips for specified sentence
+  #scope :total_sentences,  -> (sentence_id)  { where(sentence_id: sentence_id).count.to_f } 
+  #returns unique blip total for specified sentence
+  scope :blip_count_total, ->  { where(sentence_id: params[:sentence_id], body: params[:body]).count.to_f }
+  #returns blip % for sentence
+     
+
   private
 
   def word_is_valid
      errors.add(:body, "is not an english word") if Dictionary.where(word: body).blank?
   end
+
+  def total_sentences(sentence_id)
+    self.where(sentence_id: sentence_id).count.to_f
+  end
+
+
 
 
 end

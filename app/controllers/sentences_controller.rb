@@ -18,7 +18,12 @@ class SentencesController < ApplicationController
   end
 
   def index
-    @sentences = Sentence.all - current_user.sentences
+    @blips = Blip.all
+    if current_user
+      @sentences = Sentence.all - current_user.sentences
+    else
+      @sentences = Sentence.all 
+    end
     #.blips.users.where(:user_id != current_user.id)
     # All Sentences where blip.users sentence_id is not present
   end

@@ -11,13 +11,7 @@ class UsersController < ApplicationController
   end
 
   def history
-    @blips = Blip.where(:user_id => current_user.id) 
-    # Blip.where(:body).where(:body => { :user_id => current_user.id })
-    # @sentence = Sentence.find params[:sentence_id]
-    # @blip = Blip.new blip_params
-    # @blip.sentence = @sentence
-    # @blip.user_id = current_user.id
-
+    @blips = Blip.all.to_a
   end
 
   def update
