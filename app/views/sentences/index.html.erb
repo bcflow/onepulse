@@ -1,15 +1,12 @@
-<h1>one pulse</h1>
-<em>hello, world. what’s on your mind?</em>
+<%= react_component 'IndexPage', {sentences: @sentences} %>
 
-<br><br>
+<%# @sentences.each do |sentence| %>
 
-<% @sentences.each do |sentence| %>
-
-  <%= form_for [sentence, Blip.new], url: sentence_blips_path(sentence) do |f| %>
+  <%#= form_for [sentence, Blip.new], url: sentence_blips_path(sentence) do |f| %>
     <tr>
-      <td><%= sentence.body.gsub("_", f.text_field(:body)).html_safe %></td>
+      <td><%#= sentence.body.gsub("_", f.text_field(:body)).html_safe %></td>
     <tr>
-  <% end %>
+  <% #end %>
 
-<% end %>
+<%# end %>
 

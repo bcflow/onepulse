@@ -1,5 +1,6 @@
 class SentencesController < ApplicationController
 
+  respond_to :json
 
   def new
     @sentence = Sentence.new
@@ -18,11 +19,11 @@ class SentencesController < ApplicationController
   end
 
   def index
-    @blips = Blip.all
     if current_user
       @sentences = Sentence.all - current_user.sentences
+
     else
-      @sentences = Sentence.all 
+      @sentences = Sentence.all
     end
     #.blips.users.where(:user_id != current_user.id)
     # All Sentences where blip.users sentence_id is not present
