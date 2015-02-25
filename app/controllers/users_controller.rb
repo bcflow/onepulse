@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def history
-    @blips = Blip.all.to_a
+    @blips = Blip.all
+    @sentences = Sentence.all
   end
 
   def update

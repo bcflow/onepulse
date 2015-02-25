@@ -6,10 +6,7 @@ class BlipsController < ApplicationController
     user.blips << @blip
     @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
-    
-
     if @blip.save
-      
       flash[:success] = "Blip created successfully"
       redirect_to root_path
     else

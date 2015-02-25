@@ -1,10 +1,28 @@
 
+<h1>History</h1>
 
 <ul>
+  <!-- Loop through user blips -->
   <% current_user.blips.each do |blip| %> 
-  <li><%= blip.sentence.body.gsub("_", blip.body) %></li>
-   <%#= blip.total_sentences(sentence.id) %>
+    <li><%= blip.sentence.body.gsub("_", blip.body) %></li>
+    
   <% end %>
 
+  <% @blips.each do |blip| %>
+    <% sentence = blip.sentence %>
+    <li><%= blip.blip_count(blip.sentence_id, blip.body) %></li>
+  <% end %>
+
+<br>
+  <!-- returns total blips for this specific sentence user has input on -->
+  <% current_user.sentences.each do |sen| %>
+    <%= sen.blips.count.to_f %>
+  <% end %>
 </ul>
 
+
+
+Need to display:
+
+Top 5 blips (%) for this sentence
+Your blip % out of total blips

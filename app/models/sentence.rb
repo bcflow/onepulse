@@ -11,7 +11,11 @@ class Sentence < ActiveRecord::Base
   validates :body, presence: true
   validates :body, uniqueness: true
 
-  
+
+  #return total blips of this perticular body for this sentence
+  def word_total
+    Blip.where(sentence_id: sentence_id, body: body)
+  end
 
 
 end

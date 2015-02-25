@@ -2,7 +2,7 @@ class Blip < ActiveRecord::Base
 
   #RELATIONS
 
-  belongs_to              :sentence
+  belongs_to              :sentence, counter_cache: true
   has_and_belongs_to_many :users
 
   before_save { |blip| blip.body = blip.body.downcase.strip }
@@ -25,12 +25,15 @@ class Blip < ActiveRecord::Base
 
   #SCOPES
 
-  #returns total blips for specified sentence
-  #scope :total_sentences,  -> (sentence_id)  { where(sentence_id: sentence_id).count.to_f } 
   #returns unique blip total for specified sentence
   scope :blip_count_total, ->  { where(sentence_id: params[:sentence_id], body: params[:body]).count.to_f }
   #returns blip % for sentence
-     
+    
+  
+  def blip_count(sentence_id, body)
+    Blip.where(sentence_id: sentence_id, body: body).count
+  end 
+
 
   private
 
@@ -38,9 +41,7 @@ class Blip < ActiveRecord::Base
      errors.add(:body, "is not an english word") if Dictionary.where(word: body).blank?
   end
 
-  def total_sentences(sentence_id)
-    self.where(sentence_id: sentence_id).count.to_f
-  end
+
 
 
 
