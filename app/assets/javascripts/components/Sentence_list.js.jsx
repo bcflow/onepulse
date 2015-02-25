@@ -5,14 +5,17 @@ var SentenceList = React.createClass({
 
     this.props.sentences.forEach(function(sentence) {
       sentences.push(<Sentence key={sentence.id}
-                               body={sentence.body} />)
+                               details={sentence} />)
     });
+
 
     return (
       <div>{sentences}</div>
     )
   }
 });
+
+
 
 
       // sentences.push(<Sentence key={sentence.body}

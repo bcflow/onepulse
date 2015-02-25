@@ -1,5 +1,6 @@
 class SentenceSerializer < ActiveModel::Serializer
-  attributes :body
+  attributes :id, :body
 
   has_many :blips, dependent: :destroy
+
 end

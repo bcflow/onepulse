@@ -4,7 +4,7 @@ var IndexPage = React.createClass({
       <div>
         <header>
           <div className="container">
-          <h1>one pulse</h1>
+            <h1>one pulse</h1>
             <em>hello, world. what is on your mind?</em>
           </div>
         </header>
