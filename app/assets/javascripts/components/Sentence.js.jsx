@@ -10,6 +10,7 @@ var Sentence = React.createClass({
   addBlip: function(e) {
     e.preventDefault();
     var blipBody = this.refs.newBlip.getDOMNode().value
+    //pass sentence and new blip to submit function
     this.props.onSubmitBlip(this.props.details, blipBody);
   },
 

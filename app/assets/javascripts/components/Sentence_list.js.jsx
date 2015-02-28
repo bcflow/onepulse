@@ -4,21 +4,25 @@ var SentenceList = React.createClass({
       sentences: this.props.sentences
     }
   },
-
+  //receives sentence and new blip from Sentence
   addBlip: function(sentence, value) {
+    //see where in the loaded sentences we are
     var i = this.state.sentences.indexOf(sentence),
         sentences = this.state.sentences,
+        //why do we need to do this?
         self = this;
 
     $.post(
       '/sentences/' + sentence.id + '/blips',
        {blip: {body: value}},
+       //set sentence we blipped into as answered
+       //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
          self.setState({sentences: sentences});
        });
   },
- 
+  //list unanswered sentences and take out the first 3 for display
   topThreeUnansweredSentences: function() {
     var unanswered = _.where(this.state.sentences, {answered: false}); 
     return unanswered.slice(0, 3);
@@ -29,7 +33,7 @@ var SentenceList = React.createClass({
         sentences = [],
         index = 0;
 
-
+    //loop through sentences until we have 3 loaded    
     while (index <= (unanswered.length - 1)) {
       var sentence = unanswered[index];
       sentences.push(

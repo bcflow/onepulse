@@ -7,6 +7,10 @@
   line-height: 1.5;
 }
 
+body {
+  background-color: #f8f8f8;
+}
+
 nav {
   font-size: 14px !important;
 }
@@ -28,12 +32,29 @@ input {
    border-bottom:solid 1px #000;
    outline:none; /* prevents textbox highlight in chrome */
    width: 180px;
+   background-color: #f8f8f8;
 }
 
 // REACT CLASSES
 
-.active {
+.blipForm {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  color: #4c4c4c;
+  font-style: italic;
+}
+
+.active-sentence {
   font-size: 40px;
+}
+.next-sentence {
+  padding-top: 60px;
+  font-size: 32px;
+  opacity: 0.6;
+}
+.nnext-sentence {
+  font-size: 24px;
+  opacity: 0.4;
 }
 
 .example-enter {
