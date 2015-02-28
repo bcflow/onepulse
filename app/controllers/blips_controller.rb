@@ -1,12 +1,14 @@
 class BlipsController < ApplicationController
 
   def create
-    @blip = Blip.new blip_params
+    @blip ||= Blip.new blip_params
     user = current_user
     user.blips << @blip
     @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
+
     if @blip.save
+      @blip.increment!(:count)
       flash[:success] = "Blip created successfully"
       redirect_to root_path
     else

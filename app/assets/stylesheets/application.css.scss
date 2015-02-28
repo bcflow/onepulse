@@ -19,10 +19,39 @@ li {
   list-style-type: none;
 }
 
+form {
+  display: inline;
+}
+
 input {
    border:0;
    border-bottom:solid 1px #000;
    outline:none; /* prevents textbox highlight in chrome */
    width: 180px;
 }
+
+// REACT CLASSES
+
+.active {
+  font-size: 40px;
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}
+
 

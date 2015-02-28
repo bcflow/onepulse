@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224230529) do
+ActiveRecord::Schema.define(version: 20150226225700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150224230529) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "sentence_id"
+    t.integer  "count"
   end
 
   add_index "blips", ["sentence_id"], name: "index_blips_on_sentence_id", using: :btree

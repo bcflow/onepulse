@@ -6,6 +6,7 @@ class Blip < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   before_save { |blip| blip.body = blip.body.downcase.strip }
+  
   #scope :blip_answered,  
 
   
@@ -30,9 +31,7 @@ class Blip < ActiveRecord::Base
   #returns blip % for sentence
     
   
-  def blip_count(sentence_id, body)
-    Blip.where(sentence_id: sentence_id, body: body).count
-  end 
+ 
 
 
   private

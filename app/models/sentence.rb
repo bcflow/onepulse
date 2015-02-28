@@ -13,9 +13,20 @@ class Sentence < ActiveRecord::Base
 
 
   #return total blips of this perticular body for this sentence
-  def word_total
-    Blip.where(sentence_id: sentence_id, body: body)
+  def word_total(id)
+    Blip.where(sentence_id: id).count
   end
+
+  def other_responses(id)
+    self.group(:created_on).count
+    #self.blips_count.to_f / 2
+  end
+
+
+
+   def blip_count(sentence_id, body)
+    Blip.where(sentence_id: sentence_id, body: body).count
+  end 
 
 
 end

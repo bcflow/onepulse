@@ -1,12 +1,6 @@
-<%= react_component 'IndexPage', {sentences: @sentences} %>
+<%= react_component 'IndexPage',
+  {sentences: @sentences.map { |s| SentenceSerializer.new(s, root: false) }} %>
 
-<%# @sentences.each do |sentence| %>
 
-  <%#= form_for [sentence, Blip.new], url: sentence_blips_path(sentence) do |f| %>
-    <tr>
-      <td><%#= sentence.body.gsub("_", f.text_field(:body)).html_safe %></td>
-    <tr>
-  <% #end %>
 
-<%# end %>
 

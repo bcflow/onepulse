@@ -1,57 +1,45 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Sentence = React.createClass({
-  getInitialState: function() {
+  getDefaultProps: function() {
     return {
-      //
+      onSubmitBlip: function() { console.log(arguments) }
     }
   },
 
-  addBlip: function() {
+  addBlip: function(e) {
+    e.preventDefault();
     var blipBody = this.refs.newBlip.getDOMNode().value
-    var sentenceId = this.props.details.id;
-    var thisSentenceComponent = this;
-
-// Processing by BlipsController#create as JSON
-//   Parameters: {"sentence_id"=>"10"}
-
-    $.ajax({
-      url: '/sentences/' + sentenceId + '/blips',
-      type: 'POST',
-      dataType: 'json',
-      data: {blip: {body: blipBody}}
-      // error: function() {
-      //   alert('Could not send blip to server!')
-      // }
-      });
+    this.props.onSubmitBlip(this.props.details, blipBody);
   },
 
-  render: function() { 
+  render: function() {  
+    var phrase = this.props.details.body,
+        phrase_display = phrase.split("*"),
+        before = phrase_display[0],
+        after = phrase_display[1],
+        positionClass;
 
-    var phrase = this.props.details.body
-     
-      $("div").each(function() {
-      $('div.blipForm').replaceWith($('div.blipForm').text().replace(/_/, 'meow'));
-      });
+    if (this.props.isActive) {
+      positionClass = "active-sentence"
+    } else if (this.props.isNext) {
+      positionClass = "next-sentence"
+    } else if (this.props.isNnext) {
+      positionClass = "nnext-sentence"
+    }
 
-    var phrase_display = phrase.split("_");
 
-    
-    
     return (
-      <div className="blipForm">
-        {phrase_display}
+      <div className={"blipForm " + positionClass}>
+        {before}
+
         <form onSubmit={this.addBlip}>
           <input type="text"
                  ref="newBlip" />
-        <button>Send Message</button>
         </form>
+
+        {after}
       </div>
       )
   }
-});
-
-
-  // <%#= form_for [sentence, Blip.new], url: sentence_blips_path(sentence) do |f| %>
-  //   <tr>
-  //     <td><%#= sentence.body.gsub("_", f.text_field(:body)).html_safe %></td>
-  //   <tr>
-  // <% #end %>
+});      
