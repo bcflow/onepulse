@@ -39,14 +39,16 @@ var Sentence = React.createClass({
     if (this.props.details.answered) {
       var words = [];
       this.props.details.statistics.forEach(function(statistic) {
-        words.push(<div>{statistic.word}: {statistic.frequency}</div>)
+        words.push(<li className="stats-list"><span className="stats-list-word">{statistic.word} </span>
+          <span className="stats-list-percent">{statistic.frequency} </span> </li>)
       })
 
-      stats = <div>{words}</div>
+      stats = <div><span className="stats-list-header">others said:</span> {words}</div>
     }
 
     if (this.props.isActive) {
-      nextButton = <div className="nextButton" onClick={this.dismissSentence}>V</div>
+      nextButton = <div className="next-button" onClick={this.dismissSentence}>V</div>
+
     }
     if (this.props.isNext) {
       nextButton = <div></div>
@@ -69,7 +71,7 @@ var Sentence = React.createClass({
         {after}
         {nextButton}
         <br/>
-        {stats}
+        <ul>{stats}</ul>
       </div>
       )
   }

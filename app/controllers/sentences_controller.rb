@@ -24,10 +24,10 @@ class SentencesController < ApplicationController
 
   def index
     if current_user
-      @sentences = Sentence.all - current_user.sentences
+      @sentences = Sentence.all.order("created_at DESC") - current_user.sentences
 
     else
-      @sentences = Sentence.all
+      @sentences = Sentence.all.order("created_at DESC")
     end
 
     #.blips.users.where(:user_id != current_user.id)

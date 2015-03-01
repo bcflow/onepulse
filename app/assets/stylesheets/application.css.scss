@@ -106,10 +106,26 @@ input {
 .example-leave.example-leave-active {
   opacity: 0.01;
 }
+.next-button:hover {
+  cursor: pointer; 
+  cursor: hand;
+}
 
 .next-button {
   position: absolute;
-  left: 200px;
+  left: 900px;
+  top: 200px;
 }
 
+.stats-list {
+  font-weight: 300;
+  display: inline;
+  font-size: 16px;
+  .stats-list-percent {
+    color: #00d0c4;
+  }
+  .stats-list-header {
+    border: 1px solid black;
+  }
+}
 
