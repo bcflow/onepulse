@@ -3,9 +3,9 @@ var IndexPage = React.createClass({
     return (
       <div>
         <header>
-          <div className="container">
-            <h1>one pulse</h1>
-            <em>hello, world. what is on your mind?</em>
+          <div className="container header">
+            <h1 className="main-logo">one pulse</h1>
+            <span className="main-subheader"><em>hello, world. what is on your mind?</em></span>
           </div>
         </header>
 

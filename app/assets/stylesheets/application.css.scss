@@ -11,8 +11,9 @@ body {
   background-color: #f8f8f8;
 }
 
-nav {
-  font-size: 14px !important;
+nav > ul > li > a {
+  font-size: 12px !important;
+  color: #00d0c4;
 }
 
 nav > ul > li {
@@ -35,6 +36,33 @@ input {
    background-color: #f8f8f8;
 }
 
+// INDEX STYLES
+
+.main-logo {
+  color: #00d0c4;
+  font-style: italic;
+  font-size: 39px;
+  font-weight: 100;
+}
+
+.main-subheader {
+  color: #212121;
+  font-size: 12px;
+
+}
+
+.header {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+// .sentence-box {
+//   background-color: white;
+//   box-shadow: 1px;
+//   width: 400px;
+//   height: 300px;
+// }
+
 // REACT CLASSES
 
 .blipForm {
@@ -46,15 +74,19 @@ input {
 
 .active-sentence {
   font-size: 40px;
+  letter-spacing: 1px;
 }
 .next-sentence {
   padding-top: 60px;
+  padding-bottom: 30px;
   font-size: 32px;
-  opacity: 0.6;
+  opacity: 0.35;
+  letter-spacing: 1px;
 }
 .nnext-sentence {
   font-size: 24px;
-  opacity: 0.4;
+  opacity: 0.2;
+  letter-spacing: 1px;
 }
 
 .example-enter {

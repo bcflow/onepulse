@@ -11,61 +11,62 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     </head>
     <body>
+    <div class="container">
       <nav class="menu" align="right">
         <ul>
           <li><a href="/sentences/">Index</a></li>
-          |
+          <!--           |
           <li>        <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-        </fb:login-button>
-        <button class="btn btn-default" onclick="fbLogoutUser();">FB Logout
-        </button></li>
+            </fb:login-button> -->
+            <!-- <button class="btn btn-default" onclick="fbLogoutUser();">FB Logout
+          </button> -->
           <% if !current_user.present? %>
-
-            <li><a href="/log-in">Login</a></li>
-            |
-            <li><a href="/users/new">Signup</a></li>
+          <li><a href="/log-in">Login</a></li>
+          |
+          <li><a href="/users/new">Signup</a></li>
           <% end %>
-            |
+          |
           <% if current_user.present? %>
-            <li><a href="/sentences/new">Submit Question</a></li>
+          <li><a href="/sentences/new">Submit Question</a></li>
+          |
+          
+          <li><%= link_to "Profile", edit_user_path(current_user) %>
+            |
+            <li><%= link_to "History", "/history" %></li>
             |
             <li>Welcome back, <%= current_user.email %></li>
             |
             <li><a href="/log-out">Logout</a></li>
-            |
-            <li><%= link_to "Profile", edit_user_path(current_user) %>
-            |
-            <li><%= link_to "History", "/history" %></li>
-          <% end %>
-        </ul>
-      </nav>
-      <div class="container" align="center">
-        <!-- Alert boxes -->
-        <div id="alerts">
-          <% if flash[:success] %>
-          <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
-          <% end %>
-          <% if flash[:alert] %>
-          <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-          <% end %>
-        </div>
-        <!-- Facebook -->
-
-        <%= yield %>
-        
-        <hr>
+            
+            <% end %>
+          </ul>
+        </nav>
       </div>
+        <div class="container" align="center">
+          <!-- Alert boxes -->
+          <div id="alerts">
+            <% if flash[:success] %>
+            <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+            <% end %>
+            <% if flash[:alert] %>
+            <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+            <% end %>
+          </div>
+
+          <%= yield %>
+
+        </div>
         <!--- Facebook logout -->
-        <script>
-          function fbLogoutUser() {
-          FB.getLoginStatus(function(response) {
-          if (response && response.status === 'connected') {
-          FB.logout(function(response) {
-          document.location.reload();
-            });
-           }
-          });
-         }
-        </script>
+        <!-- <script>
+        function fbLogoutUser() {
+        FB.getLoginStatus(function(response) {
+        if (response && response.status === 'connected') {
+        FB.logout(function(response) {
+        document.location.reload();
+        });
+        }
+        });
+        }
+        </script> -->
       </body>
     </html>

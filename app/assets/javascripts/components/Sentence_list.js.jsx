@@ -9,8 +9,8 @@ var SentenceList = React.createClass({
     //see where in the loaded sentences we are
     var i = this.state.sentences.indexOf(sentence),
         sentences = this.state.sentences,
-        //why do we need to do this?
-        self = this;
+        // callback within a callback (post), the context changes inside the callback 
+        self = this; 
 
     $.post(
       '/sentences/' + sentence.id + '/blips',
@@ -19,28 +19,47 @@ var SentenceList = React.createClass({
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
+         // sentences[i].statistics = response.statistics;
+         // put dummy content first then work it out in the backend
+         sentences[i].statistics = [
+          {word: "butts", frequency: "95%"},
+          {word: "dogs", frequency: "2%"},
+          {word: "vegetables", frequency: "1%"},
+          {word: "sun", frequency: "2%"}
+         ];
          self.setState({sentences: sentences});
        });
   },
+
+  dismissSentence: function(sentence) {
+    var i = this.state.sentences.indexOf(sentence),
+        sentences = this.state.sentences;
+    
+    sentences[i].dismissed = true;
+    this.setState({sentences: sentences});
+  },
+
   //list unanswered sentences and take out the first 3 for display
-  topThreeUnansweredSentences: function() {
-    var unanswered = _.where(this.state.sentences, {answered: false}); 
+  //answered is only for stat display
+  topThreeRemainingSentences: function() {
+    var unanswered = _.where(this.state.sentences, {dismissed: false}); 
     return unanswered.slice(0, 3);
   },
 
   render: function() {
-    var unanswered = this.topThreeUnansweredSentences(),
+    var remaining = this.topThreeRemainingSentences(),
         sentences = [],
         index = 0;
 
     //loop through sentences until we have 3 loaded    
-    while (index <= (unanswered.length - 1)) {
-      var sentence = unanswered[index];
+    while (index <= (remaining.length - 1)) {
+      var sentence = remaining[index];
       sentences.push(
         <Sentence key={sentence.id}
                   isActive={index == 0}
                   isNext={index == 1}
                   isNnext={index == 2}
+                  onDismiss={this.dismissSentence}
                   onSubmitBlip={this.addBlip}
                   details={sentence} />
       )

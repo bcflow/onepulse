@@ -14,12 +14,18 @@ var Sentence = React.createClass({
     this.props.onSubmitBlip(this.props.details, blipBody);
   },
 
+  dismissSentence: function(e) {
+    e.preventDefault();
+    this.props.onDismiss(this.props.details);
+  },
+
   render: function() {  
     var phrase = this.props.details.body,
         phrase_display = phrase.split("*"),
         before = phrase_display[0],
         after = phrase_display[1],
-        positionClass;
+        positionClass,
+        stats;
 
     if (this.props.isActive) {
       positionClass = "active-sentence"
@@ -29,6 +35,14 @@ var Sentence = React.createClass({
       positionClass = "nnext-sentence"
     }
 
+    if (this.props.details.answered) {
+      var words = [];
+      this.props.details.statistics.forEach(function(statistic) {
+        words.push(<div>{statistic.word}: {statistic.frequency}</div>)
+      })
+
+      stats = <div>{words}</div>
+    }
 
     return (
       <div className={"blipForm " + positionClass}>
@@ -40,6 +54,10 @@ var Sentence = React.createClass({
         </form>
 
         {after}
+
+        <button onClick={this.dismissSentence}>next</button>
+        <br/>
+        {stats}
       </div>
       )
   }

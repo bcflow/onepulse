@@ -35,17 +35,23 @@ class SentencesController < ApplicationController
   end
 
   def show
-    #render json: @sentence.word_total(:id)
-    #render json: Blip.all.group(:body).count
-    #render json: Blip.group(:body).distinct.count(:sentence_id)
+    @sentence = Sentence.find(params[:id])
+
+    if current_user
+      @sentences = Sentence.all - current_user.sentences
+    else
+      @sentences = Sentence.all
+    end
+
+    @sentences = ([@sentence] + @sentences).uniq
+
+    # Stats related vvvvv
     total = @sentence.blips_count
     count = @sentence.blips.group(:body).distinct.count 
     top_results = count.sort_by { |k, v| v }.reverse[0..4].each { |k, v| puts "#{k}: #{v}" }
-    #percentage = top_results.each { |k, v| my_hash[k] = v.upcase }
     #new_count = count.sort_by { |sentence, score| score }.reverse
     render json: top_results
     #new_count.limit(5)
-    #render json: count.select{ |k, v| v == count.values.max }
    # where(sentence_id: params[:sentence_id], body: params[:body]).count.to_f
     #Blip.where(sentence_id: sentence.id).count.to_f
   end

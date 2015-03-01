@@ -7,6 +7,15 @@ class BlipsController < ApplicationController
     @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
 
+    # make this now output json:
+
+    # {statistics: [
+    #  {word: "butts", frequency: "95%"},
+    #  {word: "dogs", frequency: "2%"},
+    #  {word: "vegetables", frequency: "1%"},
+    #  {word: "sun", frequency: "2%"}
+    # ]}
+
     if @blip.save
       @blip.increment!(:count)
       flash[:success] = "Blip created successfully"
