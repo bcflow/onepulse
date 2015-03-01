@@ -9,7 +9,7 @@ var SentenceList = React.createClass({
     //see where in the loaded sentences we are
     var i = this.state.sentences.indexOf(sentence),
         sentences = this.state.sentences,
-        // callback within a callback (post), the context changes inside the callback 
+        // callback within a callback (post), the context changes inside the callback so we need to set this to self 
         self = this; 
 
     $.post(
@@ -20,7 +20,7 @@ var SentenceList = React.createClass({
        function(response) {
          sentences[i].answered = true;
          // sentences[i].statistics = response.statistics;
-         // put dummy content first then work it out in the backend
+         // put dummy content first then work it out in the backend to receive the format you want to receive (better to work from front to back)
          sentences[i].statistics = [
           {word: "butts", frequency: "95%"},
           {word: "dogs", frequency: "2%"},
@@ -31,6 +31,7 @@ var SentenceList = React.createClass({
        });
   },
 
+  //take in a sentence (sent from Sentence) and find current position in loaded sentences and set it to dismissed, then reload list
   dismissSentence: function(sentence) {
     var i = this.state.sentences.indexOf(sentence),
         sentences = this.state.sentences;
@@ -39,8 +40,7 @@ var SentenceList = React.createClass({
     this.setState({sentences: sentences});
   },
 
-  //list unanswered sentences and take out the first 3 for display
-  //answered is only for stat display
+  //list undismissed sentences and take out the first 3 for display
   topThreeRemainingSentences: function() {
     var unanswered = _.where(this.state.sentences, {dismissed: false}); 
     return unanswered.slice(0, 3);
@@ -51,7 +51,7 @@ var SentenceList = React.createClass({
         sentences = [],
         index = 0;
 
-    //loop through sentences until we have 3 loaded    
+    //loop through sentences until we have 3 remaining sentences loaded    
     while (index <= (remaining.length - 1)) {
       var sentence = remaining[index];
       sentences.push(
@@ -69,6 +69,7 @@ var SentenceList = React.createClass({
     
     return (
       <div>{sentences}</div>
+
     )
   }
 });

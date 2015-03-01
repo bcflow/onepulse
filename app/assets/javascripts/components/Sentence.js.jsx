@@ -6,14 +6,14 @@ var Sentence = React.createClass({
       onSubmitBlip: function() { console.log(arguments) }
     }
   },
-
+  //pass sentence and new blip to submit function
   addBlip: function(e) {
     e.preventDefault();
     var blipBody = this.refs.newBlip.getDOMNode().value
-    //pass sentence and new blip to submit function
     this.props.onSubmitBlip(this.props.details, blipBody);
   },
 
+  //send sentence to List to set it to dismissed
   dismissSentence: function(e) {
     e.preventDefault();
     this.props.onDismiss(this.props.details);
@@ -35,6 +35,7 @@ var Sentence = React.createClass({
       positionClass = "nnext-sentence"
     }
 
+    //find stats for sentence if answered from json and push them into array ["word", x%]
     if (this.props.details.answered) {
       var words = [];
       this.props.details.statistics.forEach(function(statistic) {
@@ -43,6 +44,18 @@ var Sentence = React.createClass({
 
       stats = <div>{words}</div>
     }
+
+    if (this.props.isActive) {
+      nextButton = <div className="nextButton" onClick={this.dismissSentence}>V</div>
+    }
+    if (this.props.isNext) {
+      nextButton = <div></div>
+    }
+    if (this.props.isNnext) {
+      nextButton = <div></div>
+    }
+
+
 
     return (
       <div className={"blipForm " + positionClass}>
@@ -54,8 +67,7 @@ var Sentence = React.createClass({
         </form>
 
         {after}
-
-        <button onClick={this.dismissSentence}>next</button>
+        {nextButton}
         <br/>
         {stats}
       </div>
