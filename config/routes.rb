@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :sentences do
-    resources :blips, only: [:create, :destroy]
+    resources :blips, only: [:create, :destroy, :show]
   end
 
   

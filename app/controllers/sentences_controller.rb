@@ -43,17 +43,17 @@ class SentencesController < ApplicationController
       @sentences = Sentence.all
     end
 
-    @sentences = ([@sentence] + @sentences).uniq
+    #@sentences = ([@sentence] + @sentences).uniq
 
     # Stats related vvvvv
-    total = @sentence.blips_count
-    count = @sentence.blips.group(:body).distinct.count 
-    top_results = count.sort_by { |k, v| v }.reverse[0..4].each { |k, v| puts "#{k}: #{v}" }
-    #new_count = count.sort_by { |sentence, score| score }.reverse
+    count = @sentence.blips.group(:body).distinct.count
+    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
+    top_results = percent.sort_by { |k, v| v }.reverse[0..4].flatten.each { |k, v| puts "#{k}: #{v}" }
+    #{"sentences":[ ["nice",8],["moon",6],["food",6],["butts",6],["test",5] ]}
+    #{stats: [{word: k frequency: v}]}
+
     render json: top_results
-    #new_count.limit(5)
-   # where(sentence_id: params[:sentence_id], body: params[:body]).count.to_f
-    #Blip.where(sentence_id: sentence.id).count.to_f
+    
   end
 
   def destroy

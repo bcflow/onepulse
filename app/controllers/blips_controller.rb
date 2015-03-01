@@ -1,5 +1,7 @@
 class BlipsController < ApplicationController
 
+  respond_to :json
+
   def create
     @blip ||= Blip.new blip_params
     user = current_user
@@ -16,17 +18,32 @@ class BlipsController < ApplicationController
     #  {word: "sun", frequency: "2%"}
     # ]}
 
+   
+    # Stats related vvvvv
+    count = @sentence.blips.group(:body).distinct.count
+    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
+    statistics = percent.sort_by { |k, v| v }.reverse[0..4].flatten.each { |k, v| puts "#{k}: #{v}" }
+    #{"sentences":[ ["nice",8],["moon",6],["food",6],["butts",6],["test",5] ]}
+    #{stats: [{word: k frequency: v}]}
+    #{"sentences":["test",0.27906976744186046,"nice",0.18604651162790697,"food",0.13953488372093023,"moon",0.13953488372093023,"butts",0.13953488372093023]}
+    render json: statistics
+
+
+
+
     if @blip.save
       @blip.increment!(:count)
-      flash[:success] = "Blip created successfully"
-      redirect_to root_path
+      render json: statistics
     else
-      flash[:alert] = "Your blip was not created"
       redirect_to root_path
     end
   end
 
   def destroy
+
+  end
+
+  def show
 
   end
 

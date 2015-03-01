@@ -89,23 +89,6 @@ input {
   letter-spacing: 1px;
 }
 
-.example-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-}
-
-.example-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-}
 .next-button:hover {
   cursor: pointer; 
   cursor: hand;
@@ -127,5 +110,25 @@ input {
   .stats-list-header {
     border: 1px solid black;
   }
+}
+
+// ANIMATIONS
+
+.animate-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.animate-enter.animate-enter-active {
+  opacity: 1;
+}
+
+.animate-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.animate-leave.animate-leave-active {
+  opacity: 0.01;
 }
 
