@@ -36,6 +36,20 @@ input {
    background-color: #f8f8f8;
 }
 
+// NAV STYLES
+
+.cd-user-modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s 0, visibility 0 0.3s;
+}
+ 
+.cd-user-modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s 0, visibility 0 0;
+}
+
 // INDEX STYLES
 
 .main-logo {
@@ -107,28 +121,36 @@ input {
   .stats-list-percent {
     color: #00d0c4;
   }
-  .stats-list-header {
-    border: 1px solid black;
-  }
+}
+.stats-list-header {
+  font-weight: 700;
+  display: inline;
+  font-size: 12px;
+
 }
 
 // ANIMATIONS
 
 .animate-enter {
-  opacity: 0.01;
+  opacity: 0.00;
+  //transform: translateY(50px);
   transition: opacity .5s ease-in;
 }
 
 .animate-enter.animate-enter-active {
+
   opacity: 1;
+  transition: opacity .5s ease-in;
+  transform: translateY(200em);
 }
 
 .animate-leave {
-  opacity: 1;
+  opacity: 0.30;
+
   transition: opacity .5s ease-in;
 }
 
 .animate-leave.animate-leave-active {
-  opacity: 0.01;
+  opacity: 0.30;
 }
 

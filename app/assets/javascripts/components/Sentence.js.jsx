@@ -1,5 +1,3 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 var Sentence = React.createClass({
   getDefaultProps: function() {
     return {
@@ -38,9 +36,11 @@ var Sentence = React.createClass({
     //find stats for sentence if answered from json and push them into array ["word", x%]
     if (this.props.details.answered) {
       var words = [];
+          index = 0;
       this.props.details.statistics.forEach(function(statistic) {
-        words.push(<li className="stats-list"><span className="stats-list-word">{statistic.word} </span>
-          <span className="stats-list-percent">{statistic.frequency} </span> </li>)
+        words.push(<li key={index} className="stats-list"><span className="stats-list-word">{statistic.word} </span>
+          <span className="stats-list-percent">{statistic.frequency} </span> </li>);
+          index = index +1;
       })
 
       stats = <div><span className="stats-list-header">others said:</span> {words}</div>
@@ -60,6 +60,8 @@ var Sentence = React.createClass({
 
 
     return (
+
+ 
       <div className={"blipForm " + positionClass}>
         {before}
 
@@ -72,6 +74,7 @@ var Sentence = React.createClass({
         {nextButton}
         <br/>
         <ul>{stats}</ul>
+
       </div>
       )
   }

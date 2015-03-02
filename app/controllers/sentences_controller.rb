@@ -45,14 +45,6 @@ class SentencesController < ApplicationController
 
     #@sentences = ([@sentence] + @sentences).uniq
 
-    # Stats related vvvvv
-    count = @sentence.blips.group(:body).distinct.count
-    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
-    top_results = percent.sort_by { |k, v| v }.reverse[0..4].flatten.each { |k, v| puts "#{k}: #{v}" }
-    #{"sentences":[ ["nice",8],["moon",6],["food",6],["butts",6],["test",5] ]}
-    #{stats: [{word: k frequency: v}]}
-
-    render json: top_results
     
   end
 

@@ -26,7 +26,7 @@ class BlipsController < ApplicationController
     #{"sentences":[ ["nice",8],["moon",6],["food",6],["butts",6],["test",5] ]}
     #{stats: [{word: k frequency: v}]}
     #{"sentences":["test",0.27906976744186046,"nice",0.18604651162790697,"food",0.13953488372093023,"moon",0.13953488372093023,"butts",0.13953488372093023]}
-    render json: statistics
+
 
 
 

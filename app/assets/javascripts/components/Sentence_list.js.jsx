@@ -22,15 +22,15 @@ var SentenceList = React.createClass({
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
-         sentences[i].statistics = response.statistics;
+         //sentences[i].statistics = response.statistics;
          // // put dummy content first then work it out in the backend to receive the format you want to receive (better to work from front to back)
-         // sentences[i].statistics = [
-         //  {word: "butts", frequency: "95%"},
-         //  {word: "dogs", frequency: "2%"},
-         //  {word: "vegetables", frequency: "1%"},
-         //  {word: "sun", frequency: "1%"},
-         //  {word: "moon", frequency: "1%"}
-         // ];
+         sentences[i].statistics = [
+          {word: "butts", frequency: "95%"},
+          {word: "dogs", frequency: "2%"},
+          {word: "vegetables", frequency: "1%"},
+          {word: "sun", frequency: "1%"},
+          {word: "moon", frequency: "1%"}
+         ];
          self.setState({sentences: sentences});
        });
   },
@@ -41,6 +41,7 @@ var SentenceList = React.createClass({
         sentences = this.state.sentences;
     
         sentences[i].dismissed = true;
+
         this.setState({sentences: sentences});
   },
 
@@ -72,9 +73,9 @@ var SentenceList = React.createClass({
 
     
     return (
-      <ReactCSSTransitionGroup transitionName="animate">
-      <div>{sentences}</div>
-      </ReactCSSTransitionGroup>
+      
+      <div>   <ReactCSSTransitionGroup transitionName="animate">{sentences}</ReactCSSTransitionGroup></div>
+
 
     )
   }
