@@ -45,7 +45,7 @@ var Sentence = React.createClass({
 
 
         words.push(<li key={index} className="stats-list"><span className="stats-list-word">{key} </span>
-          <span className="stats-list-percent">{value}</span> </li>);
+          <span className="stats-list-percent">{value + "%"}</span> </li>);
           index = index +1;
           index2 = index2 +1;
       })

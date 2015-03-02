@@ -9,19 +9,14 @@ class BlipsController < ApplicationController
     @sentence = Sentence.find params[:sentence_id]
     @blip.sentence = @sentence
 
-   
-    # Stats related vvvvv
-    count = @sentence.blips.group(:body).distinct.count
-    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
-    response = percent.sort_by { |k, v| v }.reverse[0..4].flatten.each { |k, v| puts "#{k}: #{v}" }
-
+  
 
 
 
 
     if @blip.save
       @blip.increment!(:count)
-      render json: response
+      render json: nil, status: :ok
     else
       redirect_to root_path
     end

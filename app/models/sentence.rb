@@ -22,7 +22,9 @@ class Sentence < ActiveRecord::Base
     #self.blips_count.to_f / 2
   end
 
-
+  def percent_of(n)
+    self.to_f / n.to_f * 100.0
+   end
 
    def blip_count(sentence_id, body)
     Blip.where(sentence_id: sentence_id, body: body).count

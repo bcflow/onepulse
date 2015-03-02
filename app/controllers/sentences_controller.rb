@@ -37,9 +37,9 @@ class SentencesController < ApplicationController
   def show
     @sentence = Sentence.find(params[:id])
     count = @sentence.blips.group(:body).distinct.count
-    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
+    percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
     statistics = percent.sort_by { |k, v| v }.reverse[0..4].each { |k, v| puts "#{k}: #{v}" }
-          render json: statistics
+    render json: statistics
 
     
   end
