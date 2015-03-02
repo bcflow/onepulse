@@ -31,7 +31,11 @@ class Blip < ActiveRecord::Base
   #returns blip % for sentence
     
   
- 
+ def top_5
+   count = @sentence.blips.group(:body).distinct.count
+   percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
+   statistics = percent.sort_by { |k, v| v }.reverse[0..4].flatten.each { |k, v| puts "#{k}: #{v}" }
+ end
 
 
   private

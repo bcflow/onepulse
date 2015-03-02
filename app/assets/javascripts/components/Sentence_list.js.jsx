@@ -13,24 +13,31 @@ var SentenceList = React.createClass({
     var i = this.state.sentences.indexOf(sentence),
         sentences = this.state.sentences,
         // callback within a callback (post), the context changes inside the callback so we need to set this to self 
-        self = this; 
+        self = this;
 
     $.post(
       '/sentences/' + sentence.id + '/blips',
-       {blip: {body: value}},
+       {blip: {body: value}}
+       ),
+
+    $.get(
+      '/sentences/' + sentence.id,
+
        //set sentence we blipped into as answered
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
-         //sentences[i].statistics = response.statistics;
+         console.log(response);
+
+         sentences[i].statistics = response;
          // // put dummy content first then work it out in the backend to receive the format you want to receive (better to work from front to back)
-         sentences[i].statistics = [
-          {word: "butts", frequency: "95%"},
-          {word: "dogs", frequency: "2%"},
-          {word: "vegetables", frequency: "1%"},
-          {word: "sun", frequency: "1%"},
-          {word: "moon", frequency: "1%"}
-         ];
+         // sentences[i].statistics = [
+         //  {word: "butts", frequency: "95%"},
+         //  {word: "dogs", frequency: "2%"},
+         //  {word: "vegetables", frequency: "1%"},
+         //  {word: "sun", frequency: "1%"},
+         //  {word: "moon", frequency: "1%"}
+         // ];
          self.setState({sentences: sentences});
        });
   },

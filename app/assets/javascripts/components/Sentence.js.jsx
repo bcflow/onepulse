@@ -37,10 +37,17 @@ var Sentence = React.createClass({
     if (this.props.details.answered) {
       var words = [];
           index = 0;
+          index2 = 1;
+          //statistics -> Object with array inside
       this.props.details.statistics.forEach(function(statistic) {
-        words.push(<li key={index} className="stats-list"><span className="stats-list-word">{statistic.word} </span>
-          <span className="stats-list-percent">{statistic.frequency} </span> </li>);
+        var key = statistic[index];
+        var value = statistic[index2];
+
+
+        words.push(<li key={index} className="stats-list"><span className="stats-list-word">{key} </span>
+          <span className="stats-list-percent">{value}</span> </li>);
           index = index +1;
+          index2 = index2 +1;
       })
 
       stats = <div><span className="stats-list-header">others said:</span> {words}</div>

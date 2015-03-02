@@ -36,14 +36,10 @@ class SentencesController < ApplicationController
 
   def show
     @sentence = Sentence.find(params[:id])
-
-    if current_user
-      @sentences = Sentence.all - current_user.sentences
-    else
-      @sentences = Sentence.all
-    end
-
-    #@sentences = ([@sentence] + @sentences).uniq
+    count = @sentence.blips.group(:body).distinct.count
+    percent = count.each {|k, v| count[k] = v / @sentence.blips_count.to_f }
+    statistics = percent.sort_by { |k, v| v }.reverse[0..4].each { |k, v| puts "#{k}: #{v}" }
+          render json: statistics
 
     
   end
