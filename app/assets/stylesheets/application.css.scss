@@ -121,10 +121,10 @@ input {
     display: none;
 }
 #login {
-    width: 600px;
+    width: 400px;
     padding: 30px; 
-    display:none;
-    background: #FFF;
+    display: none;
+    background: #00d0c4;
     // border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
     // box-shadow: 0px 0px 4px rgba(0,0,0,0.7); -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
 }
@@ -151,7 +151,7 @@ input {
 
 .active-sentence {
   display: relative;
-  padding-top: 40px;
+  //padding-top: 40px;
   background-color: white;
   font-size: 38px;
   letter-spacing: 1px;
@@ -165,8 +165,8 @@ input {
   font-size: 32px;
   opacity: 0.15;
   letter-spacing: 1px;
-  padding-bottom: 30px;
-  padding-top: 60px;
+  // padding-bottom: 30px;
+  // padding-top: 60px;
 }
 .nnext-sentence {
   font-weight: 100;
@@ -244,21 +244,21 @@ input {
 // ANIMATIONS
 
 .animate-enter {
-  opacity: 0.00;
-  //transform: translateY(50px);
+  opacity: 0.80;
+  transform: translateY(0em);
   transition: opacity .5s ease-in;
 }
 
 .animate-enter.animate-enter-active {
 
-  opacity: 0;
-  color: red;
+  opacity: 0.3;
   transition: opacity .5s ease-in;
-  // transform: translateY(200em);
+  transform: translateY(0em);
 }
 
 .animate-leave {
   opacity: 0.80;
+  transform: translateY(-200em);
 
   transition: opacity .5s ease-in;
 }

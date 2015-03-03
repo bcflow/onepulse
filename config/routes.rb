@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/log-out" => "sessions#destroy", as: :log_out
 
   get "/history" => "users#history"
+  get "/sentences/:id/stats" => "sentences#stats"
 
 
 

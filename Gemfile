@@ -23,6 +23,7 @@ source 'https://rubygems.org'
   gem 'country_select', git: 'https://github.com/alibabajan/country_select.git'
   gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
   gem 'active_model_serializers'
+  gem "chartkick"
 
 
 group :development do

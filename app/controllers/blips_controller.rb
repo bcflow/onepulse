@@ -37,6 +37,8 @@ class BlipsController < ApplicationController
   end
 
 
+
+
   private
 
   def blip_params

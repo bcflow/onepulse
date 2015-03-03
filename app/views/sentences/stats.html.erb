@@ -1,0 +1,14 @@
+<h1>Blips for <%= @sentence.body %></h1>
+
+<h4>Top Blips per country</h4>
+
+
+<h4>Top 10 Blips</h4>
+<%= pie_chart @statistics %>
+
+<%= geo_chart Blip.select("*").joins(:users).count %>
+
+Guardian.select("*").joins(:user)
+
+
+
