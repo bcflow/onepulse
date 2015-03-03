@@ -1,3 +1,6 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+
 var Sentence = React.createClass({
   getDefaultProps: function() {
     return {
@@ -23,7 +26,9 @@ var Sentence = React.createClass({
         before = phrase_display[0],
         after = phrase_display[1],
         positionClass,
+        filter,
         stats;
+
 
     if (this.props.isActive) {
       positionClass = "active-sentence"
@@ -50,11 +55,14 @@ var Sentence = React.createClass({
           index2 = index2 +1;
       })
 
-      stats = <div><span className="stats-list-header">others said:</span> {words}</div>
+      stats = 
+      //<ReactCSSTransitionGroup transitionName="animate-stats">
+      <div className="stats-list-container"><div className="stats-list-header">the rest of the world said:</div> {words} <a href="#"><span className="nav-text-links"><span className="nav-text-links-pre">[+]</span>full stats</span></a></div>
+      //</ReactCSSTransitionGroup>
     }
 
     if (this.props.isActive) {
-      nextButton = <div className="next-button" onClick={this.dismissSentence}>V</div>
+      nextButton = <div className="next-button" onClick={this.dismissSentence}><span className="next">next</span></div>
 
     }
     if (this.props.isNext) {
@@ -64,6 +72,7 @@ var Sentence = React.createClass({
       nextButton = <div></div>
     }
 
+    filter = <div className="filter-icon"></div>
 
 
     return (
@@ -79,10 +88,10 @@ var Sentence = React.createClass({
 
         {after}
         {nextButton}
-        <br/>
+        {filter}
         <ul>{stats}</ul>
+       </div>
 
-      </div>
       )
   }
 });      

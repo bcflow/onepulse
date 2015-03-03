@@ -27,17 +27,9 @@ var SentenceList = React.createClass({
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
-         console.log(response);
 
          sentences[i].statistics = response;
-         // // put dummy content first then work it out in the backend to receive the format you want to receive (better to work from front to back)
-         // sentences[i].statistics = [
-         //  {word: "butts", frequency: "95%"},
-         //  {word: "dogs", frequency: "2%"},
-         //  {word: "vegetables", frequency: "1%"},
-         //  {word: "sun", frequency: "1%"},
-         //  {word: "moon", frequency: "1%"}
-         // ];
+         
          self.setState({sentences: sentences});
        });
   },
@@ -81,7 +73,10 @@ var SentenceList = React.createClass({
     
     return (
       
-      <div>   <ReactCSSTransitionGroup transitionName="animate">{sentences}</ReactCSSTransitionGroup></div>
+      <div className="sentence-box"><ReactCSSTransitionGroup transitionName="animate">
+        {sentences}
+        </ReactCSSTransitionGroup>
+      </div>
 
 
     )

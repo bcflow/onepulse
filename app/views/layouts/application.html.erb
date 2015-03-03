@@ -5,27 +5,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,100italic,300italic,400italic' rel='stylesheet' type='text/css'>
+    <script src="//use.typekit.net/gwz3jpy.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+        <script type="text/javascript">
+        $(function() {
+            $('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });       
+        });
+</script>
+
+
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     </head>
     <body>
-      <nav class="menu" align="right">
+     <!--  <nav class="menu" align="right">
         <ul>
-          <li><a href="/sentences/">Index</a></li>
-<!--           |
-          <li>        <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-        </fb:login-button> -->
-        <!-- <button class="btn btn-default" onclick="fbLogoutUser();">FB Logout
-        </button> --></li>
-          <% if !current_user.present? %>
+          <%# if !current_user.present? %>
 
             <li><a href="/log-in">Login</a></li>
             |
             <li><a href="/users/new">Signup</a></li>
-          <% end %>
+          <%# end %>
             |
-          <% if current_user.present? %>
+          <%# if current_user.present? %>
             <li><a href="/sentences/new">Submit Question</a></li>
             |
             
@@ -37,9 +40,11 @@
             |
             <li><a href="/log-out">Logout</a></li>
           
-          <% end %>
+          <%# end %>
         </ul>
-      </nav>
+      </nav> -->
+      <a rel="leanModal" name="login" href="#login">test</a>
+      <div id="login">testing fo sho</div>
       <div class="container" align="center">
         <!-- Alert boxes -->
         <div id="alerts">
@@ -52,17 +57,5 @@
         </div>
         <%= yield %>
       </div>
-        <!--- Facebook logout -->
-        <!-- <script>
-          function fbLogoutUser() {
-          FB.getLoginStatus(function(response) {
-          if (response && response.status === 'connected') {
-          FB.logout(function(response) {
-          document.location.reload();
-            });
-           }
-          });
-         }
-        </script> -->
       </body>
     </html>

@@ -1,17 +1,17 @@
 var IndexPage = React.createClass({
   render: function() {
     return (
-      <div>
-        <header>
-          <div className="container header">
-            <h1 className="main-logo">one pulse</h1>
-            <span className="main-subheader"><em>hello, world. what is on your mind?</em></span>
+      <div className="container">
+        <div className="main-logo">onepulse</div>
+        <div className="header col-md-12">
+        <div className="main-subheader col-md-4">&nbsp;</div>
+        <div className="main-subheader col-md-4">hello, world. what is on your mind?</div>  
+        <div className="main-menu col-md-4"><span className="nav-text-links"><a rel="leanModal" name="login" href="#login"><span className="nav-text-links-pre">[+]</span>login/signup </a>
+        <a rel="leanModal" name="login" href="#login"><span className="nav-text-links-pre">[+]</span>how this works</a></span>
           </div>
-        </header>
-
+        </div>
         <section>
           <div className="container">
-            { /* render all of the sentences */ }
             <SentenceList sentences={this.props.sentences} />
           </div>
         </section>
