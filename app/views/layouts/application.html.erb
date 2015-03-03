@@ -9,7 +9,7 @@
     <script>try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript">
     $(function() {
-    $('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });
+    $('a[rel*=leanModal]').leanModal({ top : 100, closeButton: ".modal_close" });
     });
     </script>
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
@@ -18,62 +18,78 @@
   </head>
   <body>
     <div id="login">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <ul class="nav nav-tabs" id="tabContent">
-        <li class="active"><a href="#details" data-toggle="tab">Login</a></li>
-        <li><a href="#access-security" data-toggle="tab">Signup</a></li>
-      </ul>
+      <button type="button" class="close modal_close" data-dismiss="modal">×</button>
       <div class="tab-content">
         <div class="tab-pane active" id="details">
           <div class="login-form">
-          <p>Welcome back!</p>
+            <p>Welcome back!</p>
             <%= form_tag log_in_path do %>
             <%= text_field_tag :email, nil, placeholder: 'email', class: "form-inputs" %>
             <%= password_field_tag :password, nil, placeholder: 'password', class: "form-inputs" %>
             <%= submit_tag "Log in", class: "form-button" %>
             <%end%>
-          <div class="forgot-pwd">
-            <span class="nav-text-links"><a href="#">forgot your password?</a></span>
-            <hr class="hr-dark">
-          </div>
-          <footer class="fb-login">
-            <a href="#"><%= image_tag "facebook_login_button.png" %></a>
-          </footer>
-          </div>
-
-        </div>
-
-
-        <div class="tab-pane" id="access-security">
-          <div class="login-form">
-          <p>Signup</p>
-            <%= simple_form_for User.new do |f| %>
-              <%= f.input :email, placeholder: "email", label: false %>
-              <%= f.input :gender, collection: [ ['Female', 'Female'],['Male', 'Male'], ['Other', 'Other'] ],                               as: :radio_buttons, label: false %>
-              <%= f.input :city, placeholder: "city", label: false, input_html: { 'rows' => 1 }  %>
-              <%= f.input :age, collection: 4..120, label: false %>
-              <%= f.input :country, as: :country, label: false %>
-              <%= f.input :password, placeholder: "password", label: false %>
-              <%= f.input :password_confirmation, placeholder: "confirm password", label: false %>
-              <%= f.button :submit, "Sign Up", class: "form-button" %>
-          <% end %>
-
+            <div class="forgot-pwd">
+              <span class="nav-text-links"><a href="#">forgot your password?</a></span>
+              <hr class="hr-dark">
+            </div>
+            <footer class="fb-login">
+              <button class="facebook-button">Login with Facebook</button>
+            </footer>
           </div>
         </div>
-
       </div>
     </div>
-      <div class="container" align="center">
-        <!-- Alert boxes -->
-        <div id="alerts">
-          <% if flash[:success] %>
-          <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
-          <% end %>
-          <% if flash[:alert] %>
-          <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+    <div id="how">
+      <button type="button" class="close modal_close" data-dismiss="modal">×</button>
+      <div class="tab-content">
+        <div class="tab-pane active" id="details">
+          <div class="login-form">
+            <p>Welcome back!</p>
+            <%= form_tag log_in_path do %>
+            <%= text_field_tag :email, nil, placeholder: 'email', class: "form-inputs" %>
+            <%= password_field_tag :password, nil, placeholder: 'password', class: "form-inputs" %>
+            <%= submit_tag "Log in", class: "form-button" %>
+            <%end%>
+            <div class="forgot-pwd">
+              <span class="nav-text-links"><a href="#">forgot your password?</a></span>
+              <hr class="hr-dark">
+            </div>
+            <footer class="fb-login">
+              <button class="facebook-button">Login with Facebook</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="signup">
+      <button type="button" class="close modal_close" data-dismiss="modal">×</button>
+      <div class="tab-pane" id="access-security">
+        <div class="login-form">
+          <p>Signup</p>
+          <%= simple_form_for User.new do |f| %>
+          <%= f.input :email, placeholder: "email", label: false %>
+          <%= f.input :gender, collection: [ ['Female', 'Female'],['Male', 'Male']], as: :radio_buttons, label: false %>
+          <%= f.input :city, placeholder: "city", label: false, input_html: { 'rows' => 1 }  %>
+          
+          <%= f.input :country, as: :country, label: false, selected: "Canada" %>
+          <%= f.input :age, collection: 4..120, label: false, label: "Age", width: 50 %>
+          <%= f.input :password, placeholder: "password", label: false %>
+          <%= f.input :password_confirmation, placeholder: "confirm password", label: false %>
+          <%= f.button :submit, "Sign Up", class: "form-button" %>
           <% end %>
         </div>
-        <%= yield %>
       </div>
-    </body>
-  </html>
+    </div>
+    <div class="container" align="center">
+      <!-- Alert boxes -->
+      <div id="alerts">
+        <% if flash[:success] %>
+        <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+        <% end %>
+        <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+  </body>
+</html>
