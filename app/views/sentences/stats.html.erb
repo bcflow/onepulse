@@ -1,5 +1,8 @@
 <h1>Blips for <%= @sentence.body %></h1>
 
+<h4>Total Blips</h4>
+54,202 from X countries
+
 <h4>Top Blips per country</h4>
 
 
@@ -7,8 +10,6 @@
 <%= pie_chart @statistics %>
 
 <%= geo_chart Blip.select("*").joins(:users).count %>
-
-Guardian.select("*").joins(:user)
 
 
 

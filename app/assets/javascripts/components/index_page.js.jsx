@@ -1,7 +1,7 @@
 var IndexPage = React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="container">
         <section>
           <div className="container">
             <SentenceList sentences={this.props.sentences} />
@@ -11,5 +11,3 @@ var IndexPage = React.createClass({
     );
   }
 });
-
-$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });       
