@@ -21,12 +21,13 @@
         
           </div>
         </div>
+
 <%= react_component 'IndexPage',
   {sentences: @sentences.map { |s| SentenceSerializer.new(s, root: false) }} %>
   <div class="filters">
 
-    <%= image_tag "world_filter_icon.gif", height: 40, width: 40, class: "world-filter" %>
-        <%= image_tag "filter_point_03_03.gif", height: 24, width: 24, class: "bubble-point" %>
+  <%= image_tag "world_filter_icon.gif", height: 40, width: 40, class: "world-filter" %>
+  <%= image_tag "filter_point_03_03.gif", height: 24, width: 24, class: "bubble-point" %>
   </div>
 </div>
 

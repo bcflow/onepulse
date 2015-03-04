@@ -41,7 +41,22 @@ class SentencesController < ApplicationController
     statistics = percent.sort_by { |k, v| v }.reverse[0..4].each { |k, v| puts "#{k}: #{v}" }
     render json: statistics
 
-    
+    # all_blips_for_country = []
+    # User.where(country: "Andorra").each do |user|
+    #   user.blips.each do |blip|
+    #     all_blips_for_country << blip
+    #   end
+    # end
+    # output = Hash.new(0)
+    # all_blips_for_country.each do |blip|
+    #   output[blip.body] += 1
+    # end
+    # final_set = output.sort_by{ |k,v| v }
+    # final_set.reverse!
+
+    # render json: final_set
+
+
   end
 
   def stats
@@ -49,7 +64,7 @@ class SentencesController < ApplicationController
     count = @sentence.blips.group(:body).distinct.count
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
     @statistics = percent.sort_by { |k, v| v }.reverse[0..9].each { |k, v| puts "#{k}: #{v}" }
-    
+
   end
 
   def destroy
@@ -59,14 +74,14 @@ class SentencesController < ApplicationController
   end
 
   def edit
-    
+
   end
 
-  
+
   private
-  
+
   def sentence_params
-     params.require(:sentence).permit(:body, { tag_ids:[] })
+    params.require(:sentence).permit(:body, { tag_ids:[] })
   end
 
   def find_sentence

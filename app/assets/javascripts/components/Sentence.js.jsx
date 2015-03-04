@@ -1,15 +1,26 @@
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-
 var Sentence = React.createClass({
   getDefaultProps: function() {
     return {
       onSubmitBlip: function() { console.log(arguments) }
     }
   },
+  getInitialState: function() {
+    return { submitted: false }
+  },
+  setFocus: function () {
+    if (this.props.isActive) {
+        this.refs.newBlip.getDOMNode().focus();
+    }
+  },
+  componentDidMount: function() {
+    this.setFocus();
+  },
   //pass sentence and new blip to submit function
   addBlip: function(e) {
     e.preventDefault();
+    this.setState({submitted: true})
     var blipBody = this.refs.newBlip.getDOMNode().value
     this.props.onSubmitBlip(this.props.details, blipBody);
   },
@@ -37,6 +48,13 @@ var Sentence = React.createClass({
     } else if (this.props.isNnext) {
       positionClass = "nnext-sentence"
     }
+    if ($('.active-sentence').length == 1 && this.props.isActive && !this.state.submitted) {
+      positionClass = "active-sentence enter-active-sentence"
+      var self = this;
+      setTimeout(function() {
+        self.forceUpdate(function() { self.setFocus() });
+      }, 50)
+    }
 
     //find stats for sentence if answered from json and push them into array ["word", x%]
     if (this.props.details.answered) {
@@ -63,21 +81,9 @@ var Sentence = React.createClass({
 
     if (this.props.isActive) {
       nextButton = <div className="next-button" onClick={this.dismissSentence}><span className="next">next</span></div>
-
     }
-    if (this.props.isNext) {
-      nextButton = <div></div>
-    }
-    if (this.props.isNnext) {
-      nextButton = <div></div>
-    }
-
-    filter = <div className="filter-icon"></div>
-
 
     return (
-
- 
       <div className={"blipForm " + positionClass}>
         {before}
 
@@ -88,10 +94,8 @@ var Sentence = React.createClass({
 
         {after}
         {nextButton}
-        {filter}
         <ul>{stats}</ul>
        </div>
-
-      )
+    )
   }
 });      

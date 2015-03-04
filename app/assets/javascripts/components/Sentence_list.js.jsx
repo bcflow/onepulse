@@ -42,6 +42,7 @@ var SentenceList = React.createClass({
         sentences[i].dismissed = true;
 
         this.setState({sentences: sentences});
+
   },
 
   //list undismissed sentences and take out the first 3 for display
@@ -69,16 +70,12 @@ var SentenceList = React.createClass({
       )
       index = index + 1;
     }
-
-    
     return (
-      
-      <div className="sentence-box"><ReactCSSTransitionGroup transitionName="animate">
+      <div className="sentence-box">
+        <ReactCSSTransitionGroup transitionName="animate">
         {sentences}
         </ReactCSSTransitionGroup>
       </div>
-
-
     )
   }
 });

@@ -1,15 +1,24 @@
-<h1>Blips for <%= @sentence.body %></h1>
+<div class="container">
 
-<h4>Total Blips</h4>
-54,202 from X countries
+<div class="stats-box">
+<div class="stats-header">Stats</div>
+<div class="stats-sentence"><%= @sentence.body %></div>
 
-<h4>Top Blips per country</h4>
+<div class="stats-subheader"><span class="stats-subheader-stat"><%= @sentence.blips.count %></span> blips from X countries</div> 
+</div>
 
-
+<div class="chart">
 <h4>Top 10 Blips</h4>
-<%= pie_chart @statistics %>
+<%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 500} %>
+</div>
 
-<%= geo_chart Blip.select("*").joins(:users).count %>
+<div class="chart">
+  <h4>Top blips per Country</h4>
+<%= geo_chart Blip.select("*").joins(:users).count, library: {backgroundColor: "transparent", width: 500} %>
+</div>
+
+
+</div>
 
 
 
