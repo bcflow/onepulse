@@ -73,10 +73,9 @@ var Sentence = React.createClass({
           index2 = index2 +1;
       })
 
+      link = "/sentences/" + this.props.details.id + "/stats";
       stats = 
-      //<ReactCSSTransitionGroup transitionName="animate-stats">
-      <div className="stats-list-container"><div className="stats-list-header">the rest of the world said:</div> {words} <a href="#"><span className="nav-text-links"><span className="nav-text-links-pre">[+]</span>full stats</span></a></div>
-      //</ReactCSSTransitionGroup>
+      <div className="stats-list-container"><div className="stats-list-header">the rest of the world said:</div> {words} <a href={link} data-toggle="modal" data-target="#myModal" data-remote="true"><span className="nav-text-links"><span className="nav-text-links-pre">[+]</span>full stats</span></a></div>
     }
 
     if (this.props.isActive) {
@@ -96,6 +95,7 @@ var Sentence = React.createClass({
         {nextButton}
         <ul>{stats}</ul>
        </div>
+
     )
   }
 });      

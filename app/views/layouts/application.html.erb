@@ -12,8 +12,10 @@
     $('a[rel*=leanModal]').leanModal({ top : 100, closeButton: ".modal_close" });
     });
     </script>
+
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
@@ -24,7 +26,9 @@
           <div class="login-form">
             <p>Welcome back!</p>
             <%= form_tag log_in_path do %>
+            <%= label_tag :email %>
             <%= text_field_tag :email, nil, placeholder: 'email', class: "form-inputs" %>
+            <%= label_tag :password %>
             <%= password_field_tag :password, nil, placeholder: 'password', class: "form-inputs" %>
             <%= submit_tag "Log in", class: "form-button" %>
             <%end%>
@@ -80,6 +84,8 @@
         </div>
       </div>
     </div>
+    <div id="stats">
+    </div>
     <div class="container" align="center">
       <!-- Alert boxes -->
       <div id="alerts">
@@ -91,5 +97,6 @@
         <% end %>
       </div>
       <%= yield %>
+    </div>
   </body>
 </html>

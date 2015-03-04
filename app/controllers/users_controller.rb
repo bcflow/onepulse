@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome to the site!"
+      #flash[:notice] = "Welcome to the site!"
       redirect_to "/"
     else
       flash.now[:alert] = "There was a problem creating your account. Please try again."

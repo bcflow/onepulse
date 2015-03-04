@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
       redirect_to "/"
     else
       #whoops, either the user wasn't in the database or their password is incorrect, so let them know, then redirect them back to the log in page
-      flash[:alert] = "There was a problem logging you in."
-      redirect_to log_in_path
+      flash[:alert] = "There was a problem logging you in (session)."
+      redirect_to "/"
     end
   end
 

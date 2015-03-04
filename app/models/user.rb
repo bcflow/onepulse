@@ -14,9 +14,6 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  
-  private
-
   def encrypt_password
     self.password_salt = BCrypt::Engine.generate_salt
     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
@@ -30,5 +27,9 @@ class User < ActiveRecord::Base
       nil
     end
   end
+  
+  private
+
+
 
 end
