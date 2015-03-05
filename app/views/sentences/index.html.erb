@@ -1,37 +1,31 @@
-<div class="container">
-    <div class="main-logo">onepulse</div>
-        <div class="header col-md-12">
-        <div class="main-subheader col-md-4">&nbsp;</div>
-        <div class="main-subheader col-md-4">hello, world. what's on your mind?</div>  
-
-        <div class="main-menu col-md-4"><span class="nav-text-links">
-        <% if !current_user %>
-          <a rel="leanModal" name="login" href="#login">
-          <span class="nav-text-links-pre">
-          [+]</span>login </a>
-          <a rel="leanModal" name="signup" href="#signup"><span class="nav-text-links-pre">[+]</span>signup </a></span>
-        <% else %>
-        Welcome back <%= current_user.name ||= current_user.email %>
-          <%= link_to '<span class="nav-text-links-pre">
-          [+]</span>logout'.html_safe, log_out_path %>
-        <% end %>
-        <span class="nav-text-links">
-        <a rel="leanModal" name="how" href="#how">
-        <span class="nav-text-links-pre">[+]</span>how this works </a></span>
-        
-          </div>
-        </div>
-<%= react_component 'IndexPage',
-  {sentences: @sentences.map { |s| SentenceSerializer.new(s, root: false) }} %>
-
-
-  <div class="filters">
-  <%= image_tag "world_filter_icon.gif", height: 40, width: 40, class: "world-filter" %>
-  <%= image_tag "filter_point_03_03.gif", height: 24, width: 24, class: "bubble-point" %>
+<div class="main-logo">onepulse</div>
+<div class="header col-md-12">
+  <div class="main-subheader col-md-4">&nbsp;</div>
+  <div class="main-subheader col-md-4">hello, world. what's on your mind?</div>
+  <div class="main-menu col-md-4"><span class="nav-text-links">
+    <% if !current_user %>
+    <a rel="leanModal" name="login" href="#login">
+      <span class="nav-text-links-pre">
+    [+]</span>login </a>
+    <a rel="leanModal" name="signup" href="#signup"><span class="nav-text-links-pre">[+]</span>signup </a></span>
+    <% else %>
+    Welcome back <%= current_user.name ||= current_user.email %>
+    <%= link_to '<span class="nav-text-links-pre">
+    [+]</span>logout'.html_safe, log_out_path %>
+    <%= link_to '<span class="nav-text-links-pre">[+]</span>profile'.html_safe, edit_user_path(current_user) %>
+    <% end %>
+    <span class="nav-text-links">
+    <a rel="leanModal" name="how" href="#how">
+    <span class="nav-text-links-pre">[+]</span>how this works </a></span>
+    
   </div>
 </div>
-
-
+<%= react_component 'IndexPage',
+{sentences: @sentences.map { |s| SentenceSerializer.new(s, root: false) }} %>
+<div class="filters">
+  <%= image_tag "world_filter_icon.gif", height: 40, width: 40, class: "world-filter" %>
+  <%= image_tag "filter_point_03_03.gif", height: 24, width: 24, class: "bubble-point" %>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -40,7 +34,6 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -48,4 +41,3 @@
     </div>
   </div>
 </div>
-

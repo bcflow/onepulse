@@ -27,7 +27,7 @@ var SentenceList = React.createClass({
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
-
+         console.log(response);
          sentences[i].statistics = response;
          
          self.setState({sentences: sentences});

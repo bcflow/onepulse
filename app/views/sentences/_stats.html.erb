@@ -1,6 +1,6 @@
 <div class="stats-box">
   <div class="stats-header">Stats for:</div>
-  <div class="stats-sentence"><%= @sentence.body %></div>
+  <div class="stats-sentence"><%= @sentence.body.gsub("*", "____").html_safe  %></div>
   <hr>
   
   <div class="col-md-12 stats-container">
@@ -8,21 +8,22 @@
     <div class="stats-subheader col-md-4"><span class="stats-subheader-stat">28</span><br> countries</div>
     <div class="stats-subheader col-md-4"><span class="stats-subheader-stat">45</span><br> cities</div>
   </div>
-
-  <div class="charts-container col-md-12">
-    <span class="chart-header">Top Blip per Country</span>    
-    <div class="chart"><%= geo_chart Blip.select("*").joins(:users).count, library: {backgroundColor: "transparent", width: 500} %></div>
-     <div class="chart">
-      <span class="chart-header">Top 10 Blips</span>
-      <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 600} %>
+  <br>
+  <p class="chart-header">Top Blip per Country</p>
+  <div class="chart"><%= geo_chart Blip.select("*").joins(:users).count, library: {backgroundColor: "transparent", width: 600}, colors: ["#00d0c4", "#d0f2ef"] %></div>
+  <hr>
+  <p class="chart-header">The Most Popular Blips</p>
+  <div class="chart-pie">
+    <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 600}, colors: ["#00d0c4", "#d0f2ef"] %>
+  </div>
+  <hr>
+  <p class="chart-header">By Gender</p>
+  <div class="col-sm-12">
+    <div class="chart-pies col-sm-6"><p class="chart-header-sub">Gents</p>
+      <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 500}, colors: ["#00d0c4", "#d0f2ef"] %>
     </div>
-      <span class="chart-header">By Gender</span>
-      <div class="col-md-5">
-        <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 300} %>
-      </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-5">
-        <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 300} %>
-      </div>
+    <div class="chart-pies col-sm-6"><p class="chart-header-sub">Ladies</p>
+      <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 500}, colors: ["#00d0c4", "#d0f2ef"] %>
+    </div>
   </div>
 </div>

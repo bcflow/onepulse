@@ -19,6 +19,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
+  <div class="container">
     <div id="login">
       <button type="button" class="close modal_close" data-dismiss="modal">×</button>
       <div class="tab-content">
@@ -71,15 +72,15 @@
         <div class="login-form">
           <p>Signup</p>
           <%= simple_form_for User.new do |f| %>
-          <%= f.input :email, placeholder: "email", label: false %>
-          <%= f.input :gender, collection: [ ['Female', 'Female'],['Male', 'Male']], as: :radio_buttons, label: false %>
-          <%= f.input :city, placeholder: "city", label: false, input_html: { 'rows' => 1 }  %>
-          
-          <%= f.input :country, as: :country, label: false, selected: "Canada" %>
-          <%= f.input :age, collection: 4..120, label: false, label: "Age", width: 50 %>
-          <%= f.input :password, placeholder: "password", label: false %>
-          <%= f.input :password_confirmation, placeholder: "confirm password", label: false %>
-          <%= f.button :submit, "Sign Up", class: "form-button" %>
+            <%= f.input :email, placeholder: "email", label: false %>
+            <%= f.input :gender, collection: [ ['Female', 'Female'],['Male', 'Male']], as: :radio_buttons, label: false %>
+            <%= f.input :city, placeholder: "city", label: false, input_html: { 'rows' => 1 }  %>
+            
+            <%= f.input :country, as: :country, label: false, selected: "Canada" %>
+            <%= f.input :age, collection: 4..120, label: false, label: "Age", width: 50 %>
+            <%= f.input :password, placeholder: "password", label: false %>
+            <%= f.input :password_confirmation, placeholder: "confirm password", label: false %>
+            <%= f.button :submit, "Sign Up", class: "form-button" %>
           <% end %>
         </div>
       </div>
@@ -98,5 +99,6 @@
       </div>
       <%= yield %>
     </div>
+  </div>
   </body>
 </html>

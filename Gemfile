@@ -12,7 +12,7 @@ source 'https://rubygems.org'
   gem 'jbuilder', '~> 2.0'
   gem 'sdoc', '~> 0.4.0', group: :doc
 
-
+  gem "quiet_assets"
 
 # ADDED GEMS
   gem "bootstrap-sass"

@@ -19,6 +19,9 @@ var Sentence = React.createClass({
   },
   //pass sentence and new blip to submit function
   addBlip: function(e) {
+
+    //check if user is logged in here if not show a prompt and return
+
     e.preventDefault();
     this.setState({submitted: true})
     var blipBody = this.refs.newBlip.getDOMNode().value
@@ -62,15 +65,15 @@ var Sentence = React.createClass({
           index = 0;
           index2 = 1;
           //statistics -> Object with array inside
-      this.props.details.statistics.forEach(function(statistic) {
+      this.props.details.statistics.forEach(function(statistic, i) {
         var key = statistic[index];
         var value = statistic[index2];
 
 
-        words.push(<li key={index} className="stats-list"><span className="stats-list-word">{key} </span>
+        words.push(<li key={i} className="stats-list"><span className="stats-list-word">{key} </span>
           <span className="stats-list-percent">{value + "%"}</span> </li>);
-          index = index +1;
-          index2 = index2 +1;
+          // index = index +1; //didn't exist
+          // index2 = index2 +1;
       })
 
       link = "/sentences/" + this.props.details.id + "/stats";

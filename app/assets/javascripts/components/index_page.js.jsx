@@ -1,7 +1,7 @@
 var IndexPage = React.createClass({
   render: function() {
     return (
-      <div className="container">
+      <div>
         <section>
           <div>
             <SentenceList sentences={this.props.sentences} />
