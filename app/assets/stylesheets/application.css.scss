@@ -70,7 +70,6 @@ input {
 // NAV STYLES
 
 .main-menu {
-  transform: translateY(-3px);
   text-align: right;
   width: 33%;
   height: 22px;
@@ -96,13 +95,11 @@ input {
 }
 .main-logo {
   width: 940px;
-  align: center;
   color: #00d0c4;
   font-style: italic;
   font-size: 50px;
   font-weight: 200;
-  padding-top: 60px;
-  margin: 0 !important;
+  padding-top: 120px;
 }
 
 .main-subheader {
