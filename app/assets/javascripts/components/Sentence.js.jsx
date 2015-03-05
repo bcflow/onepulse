@@ -72,13 +72,11 @@ var Sentence = React.createClass({
 
         words.push(<li key={i} className="stats-list"><span className="stats-list-word">{key} </span>
           <span className="stats-list-percent">{value + "%"}</span> </li>);
-          // index = index +1; //didn't exist
-          // index2 = index2 +1;
       })
 
       link = "/sentences/" + this.props.details.id + "/stats";
       stats = 
-      <div className="stats-list-container"><div className="stats-list-header">the rest of the world said:</div> {words} <a href={link} data-toggle="modal" data-target="#myModal" data-remote="true"><span className="nav-text-links"><span className="nav-text-links-pre">[+]</span>full stats</span></a></div>
+      <div className="stats-list-container"><div className="stats-list-header">the world said:</div> {words} <a href={link} data-toggle="modal" data-target="#myModal" data-remote="true"><span className="nav-text-links"><span className="nav-text-links-pre">[+]</span>full stats</span></a></div>
     }
 
     if (this.props.isActive) {

@@ -7,7 +7,6 @@
 
 }
 
-
 a {
   color: #4c4c4c;
   font-size: 14px;
@@ -20,6 +19,14 @@ a:hover {
   color: #00d0c4;
   text-decoration: none;
   border-bottom: 1px solid #212121;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
 }
 
 body {
@@ -153,8 +160,16 @@ input {
     border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.7); -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
 }
-#signup {
+#submit {
     width: 380px;
+    padding: 10px; 
+    display: none;
+    background: #F8F8F8;
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7); -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+#signup {
+    width: 420px;
     padding: 10px; 
     display: none;
     background: #F8F8F8;
@@ -189,12 +204,35 @@ input {
     width: 340px;
     height: 44px;
     background-color: white;
-    color: #D8D8D8;
     font-weight: 100;
     font-size: 18px;
     font-style: italic;
     border: 1px solid #b9b9b9;
     margin-bottom: 18px;
+    box-shadow: 1px 1px 0px #dfdfdf inset;
+  }
+
+}
+.submit-form {
+  padding-left: 12px;
+  p {
+    margin: auto;
+    color: #4C4C4C;
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  input {
+    border-radius: 2px;
+    width: 340px;
+    height: 44px;
+    background-color: white;
+    font-weight: 100;
+    font-size: 18px;
+    font-style: italic;
+    border: 1px solid #b9b9b9;
     box-shadow: 1px 1px 0px #dfdfdf inset;
   }
 
@@ -246,6 +284,12 @@ input {
   display: inline;
   box-shadow: none !important;
 }
+.submit-note {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(0,0,0,0.2);
+}
+
 
 // REACT CLASSES
 

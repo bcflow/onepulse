@@ -10,7 +10,8 @@
   </div>
   <br>
   <p class="chart-header">Top Blip per Country</p>
-  <div class="chart"><%= geo_chart Blip.select("*").joins(:users).count, library: {backgroundColor: "transparent", width: 600}, colors: ["#00d0c4", "#d0f2ef"] %></div>
+<!--   <div class="chart"><%= geo_chart [["United States",44],["Germany",23],["Brazil",22]], library: {backgroundColor: "transparent", width: 600}, colors: ["#00d0c4", "#d0f2ef"] %></div> -->
+    <div class="chart"><%= geo_chart @final_output, library: {backgroundColor: "transparent", width: 600}, colors: ["#00d0c4", "#d0f2ef"] %></div>
   <hr>
   <p class="chart-header">The Most Popular Blips</p>
   <div class="chart-pie">

@@ -23,7 +23,7 @@
     <div id="login">
       <button type="button" class="close modal_close" data-dismiss="modal">×</button>
       <div class="tab-content">
-        <div class="tab-pane active" id="details">
+        <div class="tab-pane active">
           <div class="login-form">
             <p>Welcome back!</p>
             <%= form_tag log_in_path do %>
@@ -47,7 +47,7 @@
     <div id="how">
       <button type="button" class="close modal_close" data-dismiss="modal">×</button>
       <div class="tab-content">
-        <div class="tab-pane active" id="details">
+        <div class="tab-pane active">
           <div class="login-form">
             <p>Welcome back!</p>
             <%= form_tag log_in_path do %>
@@ -68,7 +68,7 @@
     </div>
     <div id="signup">
       <button type="button" class="close modal_close" data-dismiss="modal">×</button>
-      <div class="tab-pane" id="access-security">
+      <div class="tab-pane">
         <div class="login-form">
           <p>Signup</p>
           <%= simple_form_for User.new do |f| %>
@@ -81,6 +81,22 @@
             <%= f.input :password, placeholder: "password", label: false %>
             <%= f.input :password_confirmation, placeholder: "confirm password", label: false %>
             <%= f.button :submit, "Sign Up", class: "form-button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="submit">
+      <button type="button" class="close modal_close" data-dismiss="modal">×</button>
+      <div class="tab-pane">
+        <div class="submit-form">
+          <p>Want to fill a blank?</p>
+           <%= form_for Sentence.new do |f| %>
+            <%= f.text_field :body, class: "form-control", placeholder: "Use (*) to mark where the word should be." %><br>
+            <br>
+
+            <span class="submit-note">Note: Once your sentence is approved you will be notified!</span>
+            <hr>
+            <%= f.submit class: "form-button" %>
           <% end %>
         </div>
       </div>

@@ -24,21 +24,19 @@ class SentencesController < ApplicationController
 
   def index
     if current_user
-      @sentences = Sentence.includes(:blips).all.order("created_at DESC") - current_user.sentences
+      @sentences = Sentence.all.order("created_at DESC") - current_user.sentences
+      #@sentences = Sentence.include(:blips).all.order("created_at DESC") - current_user.sentences
 
     else
-      @sentences = Sentence.includes(:blips).all.order("created_at DESC")
+      @sentences = Sentence.all.order("created_at DESC")
     end
-
-    #.blips.users.where(:user_id != current_user.id)
-    # All Sentences where blip.users sentence_id is not present
   end
 
   def show
     @sentence = Sentence.find(params[:id])
     count = @sentence.blips.group(:body).distinct.count
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
-    statistics = percent.sort_by { |k, v| v }.reverse[0..3].each { |k, v| puts "#{k}: #{v}" }
+    statistics = percent.sort_by { |k, v| v }.reverse[0..2].each { |k, v| puts "#{k}: #{v}" }
     render json: statistics
 
 
@@ -46,7 +44,7 @@ class SentencesController < ApplicationController
   end
 
   def stats
-    @sentence = Sentence.include(:blips).find(params[:id])
+     @sentence = Sentence.find(params[:id])
     count = @sentence.blips.group(:body).distinct.count
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
     @statistics = percent.sort_by { |k, v| v }.reverse[0..9].each { |k, v| puts "#{k}: #{v}" }

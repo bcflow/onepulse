@@ -1,6 +1,5 @@
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-
 var SentenceList = React.createClass({
   getInitialState: function() {
     return {

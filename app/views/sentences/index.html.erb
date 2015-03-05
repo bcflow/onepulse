@@ -5,18 +5,25 @@
   <div class="main-menu col-md-4"><span class="nav-text-links">
     <% if !current_user %>
     <a rel="leanModal" name="login" href="#login">
-      <span class="nav-text-links-pre">
+      <span class="nav-text-links-pre"> 
     [+]</span>login </a>
-    <a rel="leanModal" name="signup" href="#signup"><span class="nav-text-links-pre">[+]</span>signup </a></span>
-    <% else %>
-    Welcome back <%= current_user.name ||= current_user.email %>
-    <%= link_to '<span class="nav-text-links-pre">
-    [+]</span>logout'.html_safe, log_out_path %>
-    <%= link_to '<span class="nav-text-links-pre">[+]</span>profile'.html_safe, edit_user_path(current_user) %>
-    <% end %>
+    <a rel="leanModal" name="signup" href="#signup"><span class="nav-text-links-pre"> [+]</span>signup </a></span>
     <span class="nav-text-links">
     <a rel="leanModal" name="how" href="#how">
-    <span class="nav-text-links-pre">[+]</span>how this works </a></span>
+    <span class="nav-text-links-pre"> [+]</span>how this works </a></span>
+    <% else %>
+    <!-- <span>Welcome back <%= current_user.name ||= current_user.email %></span> -->
+    <span class="nav-text-links">
+    <a rel="leanModal" name="submit" href="#submit">
+    <span class="nav-text-links-pre"> [+]</span>submit </a></span>
+    <%= link_to '<span class="nav-text-links-pre">
+    [+]</span>history'.html_safe, history_path %>
+    
+    <%= link_to '<span class="nav-text-links-pre"> [+]</span>profile'.html_safe, edit_user_path(current_user) %>
+    <%= link_to '<span class="nav-text-links-pre">
+     [+]</span>logout'.html_safe, log_out_path %>
+    <% end %>
+    
     
   </div>
 </div>
