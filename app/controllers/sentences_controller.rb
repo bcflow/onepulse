@@ -24,11 +24,11 @@ class SentencesController < ApplicationController
 
   def index
     if current_user
-      @sentences = Sentence.all.order("created_at DESC") - current_user.sentences
+      @sentences = Sentence.all.order("created_at ASC") - current_user.sentences
       #@sentences = Sentence.include(:blips).all.order("created_at DESC") - current_user.sentences
 
     else
-      @sentences = Sentence.all.order("created_at DESC")
+      @sentences = Sentence.all.order("created_at ASC")
     end
   end
 
@@ -36,7 +36,7 @@ class SentencesController < ApplicationController
     @sentence = Sentence.find(params[:id])
     count = @sentence.blips.group(:body).distinct.count
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
-    statistics = percent.sort_by { |k, v| v }.reverse[0..2].each { |k, v| puts "#{k}: #{v}" }
+    statistics = percent.sort_by { |k, v| v }.reverse[0..3].each { |k, v| puts "#{k}: #{v}" }
     render json: statistics
 
 

@@ -70,8 +70,8 @@ var Sentence = React.createClass({
         var value = statistic[index2];
 
 
-        words.push(<li key={i} className="stats-list"><span className="stats-list-word">{key} </span>
-          <span className="stats-list-percent">{value + "%"}</span> </li>);
+        words.push(<li key={i} className="stats-list"><span className="stats-list-word">{key}</span>
+          <span className="stats-list-percent">{value + "%"}</span></li>);
       })
 
       link = "/sentences/" + this.props.details.id + "/stats";
@@ -82,6 +82,12 @@ var Sentence = React.createClass({
     if (this.props.isActive) {
       nextButton = <div className="next-button" onClick={this.dismissSentence}><span className="next">next</span></div>
     }
+
+    // if (this.props.details.tag = "General) {
+    //     tag = <div className="tag"><span className="tag-icon">General</span></div>
+      
+    // }
+
 
     return (
       <div className={"blipForm " + positionClass}>
@@ -94,6 +100,7 @@ var Sentence = React.createClass({
 
         {after}
         {nextButton}
+        
         <ul>{stats}</ul>
        </div>
 

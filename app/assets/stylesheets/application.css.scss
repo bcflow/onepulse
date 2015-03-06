@@ -4,9 +4,7 @@
 * {
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
-
 }
-
 a {
   color: #4c4c4c;
   font-size: 14px;
@@ -14,30 +12,25 @@ a {
   letter-spacing: 1px;
   font-weight: 300;
 }
-
 a:hover {
   color: #00d0c4;
   text-decoration: none;
   border-bottom: 1px solid #212121;
 }
-
 a:active {
   text-decoration: none;
 }
-
 a:focus {
   outline: 0;
 }
-
 body {
   background-color: #f8f8f8;
+  //background-color: rgba(0,0,0,0.1)
 }
-
 nav > ul > li > a {
   font-size: 14px !important;
   color: #00d0c4;
 }
-
 nav > ul > li {
   display: inline;
 }
@@ -55,14 +48,12 @@ form {
 
 input {
   padding-left: 12px;
-   border:0;
-   border-bottom:solid 1px #000;
-   outline:none; /* prevents textbox highlight in chrome */
-   width: 225px;
-    background-color: transparent;
-
+  border:0;
+  border-bottom:solid 1px #000;
+  outline:none; /* prevents textbox highlight in chrome */
+  width: 225px;
+  background-color: transparent;
 }
-
 .container {
   max-width: 940px;  
 }
@@ -75,7 +66,6 @@ input {
   height: 22px;
   display: inline-block;
 }
-
 .nav-text-links {
   font-size: 14px;
   .nav-text-links-pre {
@@ -101,7 +91,6 @@ input {
   font-weight: 200;
   padding-top: 120px;
 }
-
 .main-subheader {
   padding: 0;
   width: 33%;
@@ -109,7 +98,6 @@ input {
   color: #212121;
   font-size: 14px;
   font-style: italic;
-
 }
 
 // FILTERS
@@ -129,9 +117,8 @@ input {
   transform: translateY(-1px);
   transform: translateX(8px);
 }
+
 // MODAL
-
-
 
 .nav-tabs {
   font-size: 20px;
@@ -159,14 +146,15 @@ input {
 }
 #submit {
     width: 380px;
-    padding: 10px; 
+    padding: 10px;
+    padding-bottom: 30px; 
     display: none;
     background: #F8F8F8;
     border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.7); -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
 }
 #signup {
-    width: 420px;
+    width: 380px;
     padding: 10px; 
     display: none;
     background: #F8F8F8;
@@ -208,7 +196,16 @@ input {
     margin-bottom: 18px;
     box-shadow: 1px 1px 0px #dfdfdf inset;
   }
-
+}
+#user_gender_male {
+  box-shadow: none !important;
+}
+#user_gender_female {
+  box-shadow: none !important;
+}
+.radio_buttons {
+  transform: translateY(-10px);
+  padding-left: 10px;
 }
 .submit-form {
   padding-left: 12px;
@@ -232,7 +229,6 @@ input {
     border: 1px solid #b9b9b9;
     box-shadow: 1px 1px 0px #dfdfdf inset;
   }
-
 }
 .form-button {
   background-color: #00d0c4 !important;
@@ -243,7 +239,6 @@ input {
   font-style: normal !important;
   font-weight: 400 !important;
 }
-
 .form-button:hover {
   background-color: #00ADA3 !important;
 }
@@ -287,7 +282,6 @@ input {
   color: rgba(0,0,0,0.2);
 }
 
-
 // REACT CLASSES
 
 .blipForm {
@@ -298,7 +292,7 @@ input {
 }
 
 .sentence-box {
-  //display: relative;
+  display: relative;
   background-color: white;
   margin-top: 44px;
   padding-bottom: 60px;
@@ -307,9 +301,7 @@ input {
   box-shadow: 0px 0px 12px #e9e9e9;
   max-width: 940px;
   max-height: 212px;
-
 }
-
 .active-sentence {
   z-index: 5;
   display: relative;
@@ -319,7 +311,6 @@ input {
   input {
     background-color: transparent;
   }
-
 }
 .next-sentence {
   z-index: 5;
@@ -338,7 +329,6 @@ input {
   letter-spacing: 1px;
   padding-top: 50px;
 }
-
 .next-button:hover {
   cursor: pointer; 
   cursor: hand;
@@ -346,13 +336,12 @@ input {
   color: white;
   background-color: #080808;
 }
-
 .next-button {
   height: 52px;
   width: 52px;
   position: absolute;
-  right: 220px;
-  top: 32%;
+  right: 140px;
+  top: 44%;
   font-size: 18px;
   border-radius: 50%;
   color:white;
@@ -367,15 +356,12 @@ input {
   padding-top: 4px;
   padding-bottom: 6px;
 }
-
 .filter-button {
   background-image: url("../assets/world_filter_icon.gif");
 }
-
 .stats-list-container {
   transform: translateY(-10px);
 }
-
 .stats-list {
   font-weight: 400;
   display: inline;
@@ -385,7 +371,6 @@ input {
     color: #91e2dc;
     padding-right: 8px;
   }
-
 }
 .stats-list-word {
     padding-right: 5px;
@@ -402,7 +387,6 @@ input {
   display: inline;
   font-size: 15px;
   color: #4c4c4c;
-
 }
 
 //ANIMATIONS
@@ -411,22 +395,17 @@ input {
   opacity: 0;
   transition: opacity .1s ease-in;
 }
-
 .animate-enter.animate-enter-active {
-
   opacity: 0.12;
   transition: opacity .4s ease-in;
 }
-
 .animate-leave {
   opacity: 0.3;
   transition: opacity .4s ease-in;
 }
-
 .animate-leave.animate-leave-active {
   opacity: 0.3;
   transition: opacity .3s ease-in;
-
 }
 
 // STATS
@@ -434,27 +413,24 @@ input {
 .modal { 
   width: 100%;
   left: 0;
-  background-color: transparent; }
-
+  background-color: transparent; 
+}
 .modal-body { 
   margin: auto; 
   background-color: #FFF; 
 }
-
 .modal-footer {
   border: none;
 }
-
-.modal img { min-width: none!important; }
-
+.modal img { 
+  min-width: none!important;
+}
 .modal-content {
   margin: auto;
   background-color: white;
   padding-bottom: 10px;
   border-radius: 4px;
-  //box-shadow: 0px 0px 12px #e9e9e9;
   width: 700px;
-
 }
 .close {
   color: #00d0c4;
@@ -468,21 +444,17 @@ input {
   padding: none;
 }
 .stats-box {
- margin: auto;
-
+ padding-left: 30px;
 }
-
 .stats-container {
   margin: 0 auto;
-  padding-bottom: 40px;
+  //padding-bottom: 40px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-
 .stats-header {
   font-size: 60px;
   font-weight: 200;
 }
-
 .stats-subheader {
   font-size: 20px;
   font-weight: 400;
@@ -490,41 +462,41 @@ input {
   padding-top: 0px;
   padding-bottom: 5px;
 }
-
 .stats-subheader-stat {
   color: #00d0c4;
   font-weight: 300;
   font-size: 70px;
 }
-
 .stats-sentence {
   font-size: 30px;
   font-weight: 400;
   font-style: italic;
 }
-
 .chart-pie {
   margin: 0 auto;
   left: 10%;
-  padding-left: 94px;
+  padding-bottom: 0px;
+  max-height: 500px;
+  padding-left: 120px;
 }
-
 .chart {
-  margin: 0 auto;
   padding-top: 30px;
-  max-width: 600px;
+  margin-left: 0px;
+  max-width: 508px;
+}
+#chart-1{
+  margin-left: 30px;
 }
 .chart-pies {
   margin: 0 auto;
-  right: 10%;
+  max-height: 300px;
+  //right: 10%;
 }
-
 .chart-header {
   margin: 0 auto;
   font-size: 32px;
   font-weight: 300;
 }
-
 .chart-header-sub {
   margin: 0 auto;
   font-size: 20px;
@@ -532,19 +504,17 @@ input {
   padding-left: 91px;
 }
 
+// Have a nice day!
 
 
 
 
 
 
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
 
-// * {
-//   font-family: 'Lato', sans-serif;
-//   line-height: 1.5;
-// }
+
+
+
 
 // a {
 //   color: #4c4c4c;

@@ -12,7 +12,7 @@ class Blip < ActiveRecord::Base
   
   #VALIDATIONS
 
-  validate            :word_is_valid
+  #validate            :word_is_valid
   validates           :body, presence: true
   validates           :body, length: { maximum: 25 }
   validates_format_of :body, :with => /\A[^\W_]+\z/
