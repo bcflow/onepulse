@@ -444,12 +444,15 @@ input {
   padding: none;
 }
 .stats-box {
- padding-left: 30px;
+ //padding-left: 30px;
 }
 .stats-container {
   margin: 0 auto;
-  //padding-bottom: 40px;
+  padding-bottom: 30px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.stats-share {
+  padding-top: 25px;
 }
 .stats-header {
   font-size: 60px;
@@ -468,8 +471,8 @@ input {
   font-size: 70px;
 }
 .stats-sentence {
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 38px;
+  font-weight: 200;
   font-style: italic;
 }
 .chart-pie {
@@ -498,10 +501,10 @@ input {
   font-weight: 300;
 }
 .chart-header-sub {
-  margin: 0 auto;
+  padding-top: 30px;
   font-size: 20px;
   font-weight: 300;
-  padding-left: 91px;
+  //padding-left: -3px;
 }
 
 // Have a nice day!

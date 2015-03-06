@@ -1,12 +1,13 @@
 <div class="stats-box">
   <div class="stats-header">Pulses for:</div>
-  <div class="stats-sentence"><%= @sentence.body.gsub("*", "____").html_safe  %></div>
+  <div class="stats-sentence"><%= @sentence.body.gsub("*", "_?_").html_safe  %></div>
+  <div class="stats-share"><a href="#"><%= image_tag ('fb-share.gif'), width: 30, height: 30 %></a>&nbsp;<a href="#"><%= image_tag ('twitter-logo.gif'), width: 30, height: 30 %></a></div>
   <hr>
   
   <div class="col-md-12 stats-container">
     <div class="stats-subheader col-md-4"><span class="stats-subheader-stat"><%= @sentence.blips.count %></span><br> total blips</div>
     <div class="stats-subheader col-md-4"><span class="stats-subheader-stat">10</span><br> countries</div>
-    <div class="stats-subheader col-md-4"><span class="stats-subheader-stat">45</span><br> cities</div>
+    <div class="stats-subheader col-md-4"><span class="stats-subheader-stat">12</span><br> cities</div>
   </div>
   <br>
   <p class="chart-header">Top Pulse per Country</p>
@@ -14,16 +15,16 @@
   <hr>
   <p class="chart-header">The Most Popular Pulses</p>
   <div class="chart-pie">
-    <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 500}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
+    <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 600}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
   </div>
   <hr>
   <p class="chart-header">By Gender</p>
   <div class="col-sm-12">
     <div class="chart-pies col-sm-6"><p class="chart-header-sub">Gents</p>
-      <%= pie_chart [["Money",44],["Cars",23],["Sex",22], ["Career", 89], ["Wealth", 32], ["Love", 48]], library: {backgroundColor: "transparent", width: 300}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
+      <%= pie_chart [["Money",44],["Cars",23],["Sex",22], ["Career", 89], ["Wealth", 32], ["Love", 48]], library: {backgroundColor: "transparent", width: 320}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
     </div>
     <div class="chart-pies col-sm-6"><p class="chart-header-sub">Ladies</p>
-      <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 300}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
+      <%= pie_chart @statistics, library: {backgroundColor: "transparent", width: 320}, colors: ["#001412", "#004640", "#139e92", "#139e93", "#80cdc6", "#006d63", "#00d0c4", "#d0f3ef", "#d0f4ef", "#d0f2ef"] %>
     </div>
   </div>
 </div>
