@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sentence_id: 
-  tag_id: 
+  word: MyString
 
 two:
-  sentence_id: 
-  tag_id: 
+  word: MyString

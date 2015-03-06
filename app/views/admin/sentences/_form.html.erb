@@ -1,0 +1,10 @@
+  <div class="form-group">
+    <%= form_for @sentence do |f| %>
+    <%= f.text_field :body, class: "form-control", placeholder: "Sentdence" %><br>
+        <br>
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, wrapper: :vertical_radio_and_checkboxes %>
+    <hr>
+    <%= f.submit class: "btn btn-default" %>
+    <%= button_tag "Reset", type: :reset %>
+    <% end %>
+  </div>

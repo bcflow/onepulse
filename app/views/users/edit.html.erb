@@ -1,0 +1,10 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name, placeholder: "name" %>
+  <%= f.input :email, placeholder: "email" %>
+  <%= f.input :gender, collection: [ ['Female', 'Female'],['Male', 'Male'], ['Other', 'Other'] ],                               as: :radio_buttons %>
+  <%= f.input :city, placeholder: "city" %>
+  <%= f.input :age, collection: 4..120 %>
+  <%= f.input :country, as: :country %>
+
+  <%= f.button :submit, "Update Profile" %>
+<% end %>
