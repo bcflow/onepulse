@@ -38,13 +38,11 @@ class SentencesController < ApplicationController
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
     statistics = percent.sort_by { |k, v| v }.reverse[0..3].each { |k, v| puts "#{k}: #{v}" }
     render json: statistics
-
-
-
   end
 
   def stats
-     @sentence = Sentence.find(params[:id])
+    #refactor this
+    @sentence = Sentence.find(params[:id])
     count = @sentence.blips.group(:body).distinct.count
     percent = count.each {|k, v| count[k] = (v / (@sentence.blips_count.to_f / 2) * 100).round(2) }
     @statistics = percent.sort_by { |k, v| v }.reverse[0..9].each { |k, v| puts "#{k}: #{v}" }
@@ -71,9 +69,6 @@ class SentencesController < ApplicationController
     end
 
     @final_output = final_output
-     # @new_map= new Chartkick.GeoChart("chart-1", [["United States",44],["Germany",23],["Brazil",22]]);
-
-    #render json: @final_output
   end
 
   def destroy

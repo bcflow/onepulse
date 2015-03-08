@@ -28,7 +28,7 @@ class BlipsController < ApplicationController
     render json: statistics
   end
 
-  
+
   private
 
   def blip_params

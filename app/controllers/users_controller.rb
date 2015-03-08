@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def history
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def create
     @user = User.new(user_params)
 
