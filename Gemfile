@@ -24,7 +24,7 @@ source 'https://rubygems.org'
   gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
   gem 'active_model_serializers'
   gem "chartkick"
-  gem "rails_12factor"
+  gem 'rails_12factor', group: :production
 
 
 group :development do

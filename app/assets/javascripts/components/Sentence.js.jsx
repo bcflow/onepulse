@@ -1,5 +1,3 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 var Sentence = React.createClass({
   getDefaultProps: function() {
     return {
@@ -33,7 +31,6 @@ var Sentence = React.createClass({
     e.preventDefault();
     this.props.onDismiss(this.props.details);
   },
-
   render: function() {  
     var phrase = this.props.details.body,
         phrase_display = phrase.split("*"),
@@ -42,7 +39,6 @@ var Sentence = React.createClass({
         positionClass,
         filter,
         stats;
-
 
     if (this.props.isActive) {
       positionClass = "active-sentence"
@@ -87,8 +83,6 @@ var Sentence = React.createClass({
     //     tag = <div className="tag"><span className="tag-icon">General</span></div>
       
     // }
-
-
     return (
       <div className={"blipForm " + positionClass}>
         {before}
@@ -97,13 +91,10 @@ var Sentence = React.createClass({
           <input type="text"
                  ref="newBlip" />
         </form>
-
         {after}
         {nextButton}
-        
         <ul>{stats}</ul>
        </div>
-
     )
   }
 });      

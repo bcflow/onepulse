@@ -21,8 +21,7 @@ var SentenceList = React.createClass({
 
     $.get(
       '/sentences/' + sentence.id,
-
-       //set sentence we blipped into as answered
+        //set sentence we blipped into as answered
        //reset state to reload sentences state after post
        function(response) {
          sentences[i].answered = true;
