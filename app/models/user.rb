@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   
   #VALIDATIONS
   # validates_confirmation_of :password
-  # validates :email, uniqueness: true
-  # validates_format_of :email, :with => /@/ 
+  validates :email, uniqueness: true
+  validates_format_of :email, :with => /@/ 
 
   #before_save :encrypt_password
 

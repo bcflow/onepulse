@@ -18,7 +18,7 @@ source 'https://rubygems.org'
   gem "bootstrap-sass"
   gem 'simple_form'
   gem 'devise'
-  gem "bcrypt", :require => "bcrypt"
+  gem "bcrypt-rails", :require => "bcrypt"
   gem 'activeadmin', github: 'activeadmin'
   gem 'country_select', git: 'https://github.com/alibabajan/country_select.git'
   gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
