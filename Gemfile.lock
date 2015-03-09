@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: ed1fbca8c64af827616c58f274d7be256ca513b6
+  revision: 74769783b78046d4e5cd148beb957317a4f86ca1
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/reactjs/react-rails.git
-  revision: ac4320eb183b948ec328a695cd54d27c769073af
+  revision: 901c8f68445df849642394cdf9859d293dc13f04
   specs:
     react-rails (1.0.0.pre)
       coffee-script-source (~> 1.9)
@@ -91,7 +91,7 @@ GEM
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
-    bourbon (4.2.0)
+    bourbon (4.2.1)
       sass (~> 3.4)
       thor
     builder (3.2.2)
@@ -111,9 +111,10 @@ GEM
     coffee-script-source (1.9.1)
     colorize (0.7.5)
     columnize (0.9.0)
-    connection_pool (2.1.1)
-    countries (0.10.0)
+    connection_pool (2.1.2)
+    countries (0.11.0)
       currencies (~> 0.4.2)
+      i18n_data (~> 0.6.0)
     currencies (0.4.2)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -125,7 +126,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    execjs (2.3.0)
+    execjs (2.4.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -145,6 +146,7 @@ GEM
     hike (1.2.3)
     hirb (0.7.3)
     i18n (0.7.0)
+    i18n_data (0.6.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
       has_scope (~> 0.6.0.rc)
@@ -152,7 +154,7 @@ GEM
       responders
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
-    jbuilder (2.2.7)
+    jbuilder (2.2.11)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
@@ -173,7 +175,7 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -206,7 +208,7 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-erd (1.3.0)
+    rails-erd (1.3.1)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       choice (~> 0.1.6)
@@ -236,7 +238,7 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     ruby-graphviz (1.0.9)
-    sass (3.4.12)
+    sass (3.4.13)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -252,7 +254,7 @@ GEM
     slop (3.6.0)
     spoon (0.0.4)
       ffi
-    spring (1.3.2)
+    spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -269,15 +271,15 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.7.0)
+    uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    web-console (2.0.0)
-      activemodel (~> 4.0)
+    web-console (2.1.1)
+      activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
-      railties (~> 4.0)
+      railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
 
 PLATFORMS
